@@ -64,11 +64,9 @@ app.use(passport.session());
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-const index = require('./routes/index');
-const foodsApi = require('./routes/foods-api');
-app.use('/', index);
-app.use('/api',foodsApi);
-
+app.use((req, res, next) => {
+  res.sendfile(__dirname + '/public/index.html');
+});
 
 
 // catch 404 and forward to error handler

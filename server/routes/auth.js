@@ -16,7 +16,7 @@ authRoutes.post('/signup', (req, res, next) => {
   const {username,password} = req.body;
 
   if(!username || !password) {
-    req.status(400).json({
+    res.status(400).json({
       message:'Please provide matching username and/or password'
     });
     return;
@@ -63,7 +63,7 @@ authRoutes.post('/login', (req, res, next) => {
     }
 
     if(!theUser) {
-      res.statut(401).json(failureDetails);
+      res.status(401).json(failureDetails);
       return;
     }
 

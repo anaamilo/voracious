@@ -17,7 +17,7 @@ module.exports = function (passport) {
       }
 
       if (!bcrypt.compareSync(password, foundUser.password)) {
-        next(null, false, { message: 'Incorrect password' });
+        next(null, false, { message: 'Wrong password' });
         return;
       }
 
@@ -40,4 +40,4 @@ module.exports = function (passport) {
     });
   });
 
-}
+};
