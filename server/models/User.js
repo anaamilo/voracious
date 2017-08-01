@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
 
-  username: String,
+ username: String,
   password: String,
   name: String,
   email: String,
   imgAvatar: {
     type: String,
-    default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250&h=250"
+    default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250"
   },
   city: String,
   birthyear: Date,
