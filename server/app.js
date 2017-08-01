@@ -47,7 +47,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
 const index = require('./routes/index');
+const foodsApi = require('./routes/foods-api');
 app.use('/', index);
+app.use('/api',foodsApi);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

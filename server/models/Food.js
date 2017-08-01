@@ -13,8 +13,9 @@ const FoodSchema = mongoose.Schema({
   rate: {type:Number},
   restaurantName: {type:String},
   restaurantAddress: {type:String},
-  resturantFoodName: {type:String},
+  restaurantFoodName: {type:String},
   review: {type:String},
+},{
   timestamps: {
     createdAt: "created_at",
     updatedAt: "updated_at"
