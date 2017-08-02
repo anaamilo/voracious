@@ -5,7 +5,7 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
-          <input id="username" type="password" class="validate">
+          <input id="username" type="text" class="validate">
           <label for="username"> Username</label>
         </div>
 
@@ -76,6 +76,7 @@
             <textarea id="textarea1" class="materialize-textarea" data-length="100"></textarea>
             <label for="textarea1">Textarea</label>
           </div>
+            <button (click)='signup()' type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Sign Up</button>
       </div>
 
     </form>
@@ -86,7 +87,7 @@
 
   </script>
 
-  <button (click)="signup()"> signup </button>
+
 
 <a [routerLink]="['']"> Homepage </a>
 

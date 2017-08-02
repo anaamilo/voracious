@@ -6,11 +6,14 @@ import {RouterModule} from '@angular/router';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {SessionService} from '../services/session.service'
+import {SessionService} from '../services/session.service';
+import {FoodService} from '../services/food.service';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { FoodListComponent } from './food-list/food-list.component';
+import { NewFoodComponent } from './new-food/new-food.component';
 
 
 
@@ -20,7 +23,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HomepageComponent
+    HomepageComponent,
+    FoodListComponent,
+    NewFoodComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, FoodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
