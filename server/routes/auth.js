@@ -88,6 +88,7 @@ function ensureLoginOrJsonError(error ="Unauthorized") {
 //Logout routes
 authRoutes.get('/logout', ensureLoginOrJsonError("User is not logged in"), (req,res,next) => {
   req.logout();
+  console.log("hola");
   res.status(200).json({
     message:"Successfull logout"
   });
