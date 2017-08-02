@@ -36,22 +36,20 @@ export class NewFoodComponent implements OnInit {
 
 
 
-  submit(){
-    this.uploader.onBuildItemForm = (item, form) => {
-      form.append('name', this.newFood.foodName);
-      form.append('category', this.newFood.foodCategory);
-      form.append('SubCategory', this.newFood.foodSubCategory);
-      form.append('user id', this.newFood.foodCreator);
-      form.append('price', this.newFood.price);
-      form.append('rate', this.newFood.rate);
-      form.append('imgAvatar', this.newFood.imgAvatar);
-      form.append('restaurant name', this.newFood.restaurantName);
-      form.append('restaurant address', this.newFood.restaurantAddress);
-      form.append('restaurant foodname', this.newFood.restaurantFoodName);
-      form.append('review', this.newFood.review);
-      ;
-    };
-
-}
+  // submit(){
+  //   this.uploader.onBuildItemForm = (item, form) => {
+  //     form.append('name', this.newFood.foodName);
+  //     form.append('category', this.newFood.foodCategory);
+  //     form.append('SubCategory', this.newFood.foodSubCategory);
+  //     form.append('user id', this.newFood.foodCreator);
+  //     form.append('price', this.newFood.price);
+  //     form.append('rate', this.newFood.rate);
+  //     form.append('imgAvatar', this.newFood.imgAvatar);
+  //     form.append('restaurant name', this.newFood.restaurantName);
+  //     form.append('restaurant address', this.newFood.restaurantAddress);
+  //     form.append('restaurant foodname', this.newFood.restaurantFoodName);
+  //     form.append('review', this.newFood.review);
+  //     ;
+  //   };
 
 }
