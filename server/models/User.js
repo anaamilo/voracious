@@ -6,13 +6,14 @@ const UserSchema = new Schema({
  username: String,
   password: String,
   name: String,
+  lastname: String,
   email: String,
-  imgAvatar: {
+  avatarImage: {
     type: String,
     default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250"
   },
   city: String,
-  birthyear: Date,
+  birthdate: Date,
   description: String,
 }, {
   timestamps: {

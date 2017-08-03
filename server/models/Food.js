@@ -8,7 +8,7 @@ const FoodSchema = mongoose.Schema({
     enum: ['Cocina Española', 'Cocina Boliviana', 'Cocina Italiana', 'Cocina Americana', 'Cocina Japonesa'],
   },
   foodSubCategory: {type: String, required: true },
-  foodeCreator: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  foodCreator: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   price: {type:Number},
   rate: {type:Number},
   imgAvatar: {

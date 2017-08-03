@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionService} from '../../services/session.service'
+import { Router } from '@angular/router';
+import $ from 'jquery';
 
 
 @Component({
@@ -12,9 +14,25 @@ export class SignupComponent implements OnInit {
   error: string;
   username:string;
   password:string;
+  newUser = {
+    username: '',
+    password: '',
+    name: '',
+    lastname: '',
+    email: '',
+    city: '',
+    description: '',
+    birthdate: new Date()
+  };
 
-  constructor(private session: SessionService) { }
+  start = '';
+
+  constructor(private session: SessionService, private router: Router) { }
   ngOnInit() {
+    $('.datepicker').pickadate({
+   selectMonths: true, // Creates a dropdown to control month
+   selectYears: 15 // Creates a dropdown of 15 years to control year
+ });
   }
 
   login() {
@@ -26,11 +44,14 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    this.session.signup(this.username, this.password)
-      .subscribe(
+    console.log(this.newUser);
+    this.session.signup(this.newUser)
+    .subscribe(
         (user) => console.log(user),
         (err) => this.error = err
       );
+      this.router.navigate(['/home']);
+      console.log(`${this.username} is created`)
   }
 
   logout() {
