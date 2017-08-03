@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { FileUploader } from "ng2-file-upload";
 import {environment} from '../../environments/environment';
 import { Router } from '@angular/router';
+import { FoodService } from '../../services/food.service';
 
 @Component({
   selector: 'app-new-food',
@@ -13,7 +14,7 @@ export class NewFoodComponent implements OnInit {
   // uploader: FileUploader = new FileUploader({
   //   url: `${environment.BASE_URL}/api/foods/`
   // });
-
+  error: string;
   newFood = {
     foodName: '',
     foodCategory: '',
@@ -28,15 +29,22 @@ export class NewFoodComponent implements OnInit {
     review:'',
   };
 
-  constructor(public router:Router) { }
+  constructor(private session: FoodService, public router:Router) { }
 
 
   ngOnInit() {
     };
 
-
-
-  // submit(){
+  createFood(){
+      console.log(this.newFood);
+      this.session.createFood(this.newFood)
+      .subscribe(
+          (user) => console.log(user),
+          (err) => this.error = err
+        );
+        this.router.navigate(['/']);
+        console.log(`${this.newFood} is created`)
+    }
   //   this.uploader.onBuildItemForm = (item, form) => {
   //     form.append('name', this.newFood.foodName);
   //     form.append('category', this.newFood.foodCategory);

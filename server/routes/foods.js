@@ -3,7 +3,7 @@ var router = express.Router();
 const Food = require('../models/Food');
 
 
-router.get('/foods', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Food.find((err, foodsList) => {
     if (err) {
       res.json(err);
@@ -13,7 +13,7 @@ router.get('/foods', (req, res, next) => {
   });
 });
 
-router.post('/foods', (req, res, next) => {
+router.post('/add', (req, res, next) => {
   const theFood = new Food({
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
@@ -41,7 +41,7 @@ router.post('/foods', (req, res, next) => {
   });
 });
 
-router.get('/foods/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
@@ -56,7 +56,7 @@ router.get('/foods/:id', (req, res) => {
       res.json(theFood);
     });
 });
-router.put('/foods/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
@@ -87,7 +87,7 @@ router.put('/foods/:id', (req, res) => {
     });
   });
 });
-router.delete('/foods/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
