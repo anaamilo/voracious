@@ -1,0 +1,26 @@
+.searchbox {
+  margin-top: 20px;
+  background-image: url("https://static.pexels.com/photos/54296/pexels-photo-54296.jpeg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  border: 2px #CCC;
+}
+
+.boximage {
+  margin-top:20px;
+}
+
+.foodtitle h1, h5{
+  text-align: center;
+  color: white;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.searcher {
+  margin-bottom: 40px;
+}
+
+.buttonsearch {
+  margin-top: 15px;
+}
