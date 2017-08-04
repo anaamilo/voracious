@@ -1,6 +1,9 @@
 .searchbox {
   margin-top: 20px;
-  background-image: url("https://static.pexels.com/photos/54296/pexels-photo-54296.jpeg");
+  background-image:   linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.4)
+    ), url("../../assets/coverHomepage.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   border: 2px #CCC;
@@ -17,10 +20,93 @@
   margin-top: 0;
 }
 
+h2 {
+  text-align: center;
+}
+
 .searcher {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 .buttonsearch {
-  margin-top: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.foodtiles {
+  text-align: center;
+}
+
+.foodtile {
+  height:100px;
+  border: 2px solid #CCC;
+}
+
+.foodtile a:active, a:visited {
+  color:white;
+}
+
+.foodtile a:hover {
+  color:#26a69a;
+}
+
+.foodtile h5 {
+  margin-top: 30px
+}
+
+.foodcategory {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left:2px;
+}
+
+
+
+
+
+
+
+.pizza {
+
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ), url("../../assets/pizza.jpg");
+}
+
+.burger {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ), url("../../assets/category_burger.jpg");
+}
+
+.croquetas {
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ), url("../../assets/croquetas.jpg");
+}
+
+.paella {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),url("../../assets/paella.jpg");
+}
+
+.sushi {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ), url("../../assets/sushi.jpg");
+}
+
+.pique {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ), url("../../assets/Piquemacho.png");
 }
