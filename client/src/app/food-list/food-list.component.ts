@@ -8,10 +8,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./food-list.component.css']
 })
 export class FoodListComponent implements OnInit {
-  foods:Observable<Array<object>>;
-   constructor(private foodService: FoodService) { }
+  foods: Observable<Array<object>>;
 
-   ngOnInit() {
-     this.foods = this.foodService.getList();
-   }
+  constructor(private foodService: FoodService) { }
+
+  ngOnInit() {
+    this.foodService.getList()
+      .subscribe((foods) => {
+        this.foods = foods;
+      });
+  }
 }
