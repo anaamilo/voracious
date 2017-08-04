@@ -31,7 +31,7 @@ export class FoodService {
    }
 
    createFood(food):Observable<Food>{
-     return this.http.post(`${this.BASE_URL}/add`, food,this.options)
+     return this.http.post(`${this.BASE_URL}`, food,this.options)
      .map(res => res.json())
      .catch(this.handleError);
  }

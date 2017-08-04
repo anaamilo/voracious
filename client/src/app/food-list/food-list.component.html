@@ -2,9 +2,9 @@
 <h3> Food list </h3>
 <a [routerLink]="['add']"> Add new food </a>
 <div>
-  <div *ngFor="let food of foods | async" class="blocky">
-    <img height=150 [src]="food.imageURL" />
-    <h3> {{ food.name }} </h3>
-    <a [routerLink]="['food', food._id]"> View Details </a>
+  <div *ngFor="let food of foods" class="blocky">
+    <img height=150 [src]="food.imageAvatar" />
+    <h3> {{ food.foodName }} </h3>
+    <a [routerLink]="[]"> View Details </a>
   </div>
 </div>

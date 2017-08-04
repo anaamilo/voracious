@@ -13,12 +13,13 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.post('/add', (req, res, next) => {
+router.post('/', (req, res, next) => {
+  console.log(req.user);
   const theFood = new Food({
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
     foodSubCategory: req.body.SubCategory,
-    foodCreator: req.user._id,
+    // foodCreator: req.user._id,
     price: req.body.price,
     rate: req.body.rate,
     restaurantName: req.body.restaurantName,
@@ -27,18 +28,14 @@ router.post('/add', (req, res, next) => {
     review: req.body.review,
     image: req.body.image || ''
   });
-
-  theFood.save((err) => {
-    if (err) {
-      res.json(err);
-      return;
-    }
-
+  console.log('POST');
+  console.log(theFood);
+  theFood.save().then( food => {
     res.json({
       message: 'New Food created!',
       id: theFood._id
     });
-  });
+  }).catch( error => res.json(error));
 });
 
 router.get('/:id', (req, res) => {

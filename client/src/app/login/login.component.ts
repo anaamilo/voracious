@@ -20,10 +20,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.session.login(this.username,this.password)
       .subscribe(
-        (user) => console.log(user),
+        (user) => this.router.navigate(['/home']),
         (err) => this.error = err
       );
-      this.router.navigate(['/home']);
+
       console.log(`${this.username} is logged`)
     }
   }

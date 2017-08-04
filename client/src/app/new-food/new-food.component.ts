@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from '../../environments/environment';
 import { Router } from '@angular/router';
 import { FoodService } from '../../services/food.service';
+import $ from 'jquery';
+
 
 @Component({
   selector: 'app-new-food',
@@ -15,6 +17,7 @@ export class NewFoodComponent implements OnInit {
   //   url: `${environment.BASE_URL}/api/foods/`
   // });
   error: string;
+  foodName: string;
   newFood = {
     foodName: '',
     foodCategory: '',
@@ -29,17 +32,18 @@ export class NewFoodComponent implements OnInit {
     review:'',
   };
 
-  constructor(private session: FoodService, public router:Router) { }
+  constructor(
+    private foodService: FoodService,
+    public router:Router) {}
 
 
-  ngOnInit() {
-    };
+  ngOnInit() {}
 
   createFood(){
       console.log(this.newFood);
-      this.session.createFood(this.newFood)
+      this.foodService.createFood(this.newFood)
       .subscribe(
-          (user) => console.log(user),
+          (Food) => console.log(Food),
           (err) => this.error = err
         );
         this.router.navigate(['/']);

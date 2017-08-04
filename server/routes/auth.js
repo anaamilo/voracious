@@ -13,7 +13,7 @@ authRoutes.get('/signup',returnMessage("This should be a POST"));
 
 //Sign-up POST route
 authRoutes.post('/signup', (req, res, next) => {
-  
+
   const {
     username,
     password,

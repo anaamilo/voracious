@@ -9,7 +9,7 @@ const FoodSchema = new Schema({
     required: true,
     enum: ['Cocina Española', 'Cocina Boliviana', 'Cocina Italiana', 'Cocina Americana', 'Cocina Japonesa'],
   },
-  foodSubCategory: {type: String, required: true },
+  foodSubCategory: {type: String },
   foodCreator: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   price: {type:Number},
   rate: {type:Number},
@@ -28,4 +28,5 @@ const FoodSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Food', FoodSchema);
+const Food = mongoose.model('Food', FoodSchema);
+module.exports = Food;
