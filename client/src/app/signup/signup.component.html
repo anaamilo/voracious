@@ -3,23 +3,45 @@
   <h1> Create Your Profile</h1>
 
   <div class="card-panel  grey lighten-4">
-    <form class="col s12" (ngSubmit)="signup(myForm)" #myForm="ngForm">
+    <form class="col s12" (ngSubmit)="signup(myForm)" #myForm="ngForm" novalidate>
 
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
-          <input id="username" type="text" [(ngModel)]="newUser.username" name="username" class="validate">
+          <input id="username" type="text" [(ngModel)]="newUser.username"
+          name="username" #myUsername="ngModel"  minlength="6" required>
           <label for="username"> Username</label>
         </div>
+        <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+
+          <p class="error" [hidden]="!myUsername.errors.required">
+         Please enter a Name
+         <p>
+          <p class="error" [hidden]="!myUsername.errors.minlength">
+            Name must be at least 6 characters long
+          </p>
+</div>
 
       </div>
+
+
 
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">lock</i>
-          <input id="password" type="password" [(ngModel)]="newUser.password" name="password"class="validate">
+          <input id="password" type="password" [(ngModel)]="newUser.password"
+          #myPassword="ngModel" minlength="8" name="password" class="validate" required>
           <label for="password">Password</label>
         </div>
+
+        <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+          <p class="error" [hidden]="!myPassword.errors.required">
+         Please enter a Password
+         <p>
+          <p class="error" [hidden]="!myPassword.errors.minlength">
+            Password must be at least 8 characters long
+          </p>
+</div>
 
       </div>
 
@@ -30,25 +52,49 @@
 
         <div class="input-field col s6">
              <i class="material-icons prefix">person</i>
-             <input id="icon_prefix" type="text" [(ngModel)]="newUser.name" name="name" class="validate">
+             <input id="icon_prefix" type="text" [(ngModel)]="newUser.name"
+             #myFirst="ngModel" name="name" class="validate" required>
              <label for="icon_prefix">First Name</label>
            </div>
 
         <div class="input-field col s6">
           <i class="material-icons prefix">people</i>
-          <input id="lastname" type="text" [(ngModel)]="newUser.lastname" name="lastname" class="validate">
+          <input id="lastname" type="text" [(ngModel)]="newUser.lastname"
+          #myLast="ngModel" name="lastname" class="validate" required>
           <label for="lastname">Last Name</label>
         </div>
       </div>
+
+      <div *ngIf="myFirst.errors && (myFirst.dirty || myFirst.touched)">
+        <p class="error" [hidden]="!myFirst.errors.required">
+       Please enter your First Name
+       <p>
+</div>
+
+<div *ngIf="myLast.errors && (myLast.dirty || myLast.touched)">
+  <p class="error" [hidden]="!myLast.errors.required">
+ Please enter your Last Name
+ <p>
+</div>
 
 
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-          <input id="email" type="email" [(ngModel)]="newUser.email" name="email" class="validate">
+          <input id="email" type="email" [(ngModel)]="newUser.email"
+          name="email" #myEmail="ngModel" class="validate" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
           <label for="email">Email</label>
         </div>
       </div>
+
+      <div *ngIf="myEmail.errors && (myEmail.dirty || myEmail.touched)">
+        <p class="error" [hidden]="!myEmail.errors.required">
+       Please enter your E-mail
+       <p>
+        <p class="error" [hidden]="!myEmail.errors.pattern">
+          Email is invalid
+        </p>
+</div>
 
       <div class="row">
         <div class="input-field col s6">
@@ -60,7 +106,7 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">date_range</i>
           <input type="date" materialize="pickadate" [(ngModel)]="newUser.birthdate" #stBirthdate="ngModel" name="birthdate" class="datepicker">
-
+          <label for="city">Birthdate</label>
         </div>
       </div>
 
@@ -76,20 +122,19 @@
       <div class="row">
         <div class="input-field col s12">
               <i class="material-icons prefix">description</i>
-            <textarea id="textarea1" [(ngModel)]="newUser.description" name="description" class="materialize-textarea" data-length="100"></textarea>
+            <textarea id="textarea1" [(ngModel)]="newUser.description" name="description" class="materialize-textarea" data-length="120"></textarea>
             <label for="textarea1">Textarea</label>
           </div>
             <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Sign Up</button>
       </div>
 
+
     </form>
   </div>
-<<<<<<< HEAD
-=======
+
 </div>
 
 
 
 
 <p class="error"> {{ error }} </p>
->>>>>>> ea2c2b6fa39fa8323227a5b4d6e58f9156ee64f0

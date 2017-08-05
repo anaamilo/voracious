@@ -1,9 +1,18 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+
 .searchbox {
   margin-top: 20px;
-  background-image:   linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.4)
-    ), url("../../assets/coverHomepage.jpg");
+  background-image: url("../../assets/cover2.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   border: 2px #CCC;
@@ -38,7 +47,7 @@ h2 {
 }
 
 .foodtile {
-  height:100px;
+  height:150px;
   border: 2px solid #CCC;
 }
 
@@ -51,7 +60,7 @@ h2 {
 }
 
 .foodtile h5 {
-  margin-top: 30px
+  margin-top: 60px
 }
 
 .foodcategory {
@@ -61,12 +70,14 @@ h2 {
   margin-left:2px;
 }
 
+footer {
+  text-align: center;
+}
 
-
-
-
-
-
+.page-footer {
+  background-color: #3949ab;
+  padding-top: 0;
+}
 .pizza {
 
     background-image: linear-gradient(

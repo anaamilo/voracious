@@ -40,4 +40,5 @@ import { FileSelectDirective } from "ng2-file-upload";
   providers: [SessionService, FoodService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
