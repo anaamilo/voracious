@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
 
         (user) =>   this.router.navigate(['/home']);
         (err) => this.error = err;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f149f8f9733ee398aec92a50fa47a80aab235ae
       console.log(`${this.username} incorrect user`);
 
     }

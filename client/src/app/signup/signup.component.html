@@ -122,19 +122,21 @@
       <div class="row">
         <div class="input-field col s12">
               <i class="material-icons prefix">description</i>
-            <textarea id="textarea1" [(ngModel)]="newUser.description" name="description" class="materialize-textarea" data-length="120"></textarea>
+            <textarea id="textarea1" [(ngModel)]="newUser.description"
+            #myText="ngModel" name="description" class="materialize-textarea"></textarea>
             <label for="textarea1">Textarea</label>
           </div>
+
             <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Sign Up</button>
+
       </div>
+
+
 
 
     </form>
   </div>
 
 </div>
-
-
-
 
 <p class="error"> {{ error }} </p>
