@@ -20,17 +20,14 @@ export class LoginComponent implements OnInit {
   login() {
     this.session.login(this.username,this.password)
       .subscribe(
-<<<<<<< HEAD
+
         (user) => this.router.navigate(['/home']),
         (err) => this.error = err
       );
-
-      console.log(`${this.username} is logged`)
-=======
-        (user) =>   this.router.navigate(['/home']),
+      console.log(`${this.username} is logged`);
+        (user) =>   this.router.navigate(['/home']);
         (err) => this.error = err
-      );
-      console.log(`${this.username} incorrect user`)
->>>>>>> ea2c2b6fa39fa8323227a5b4d6e58f9156ee64f0
+      console.log(`${this.username} incorrect user`);
+
     }
   }

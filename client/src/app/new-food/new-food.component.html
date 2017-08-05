@@ -44,7 +44,7 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">image</i>
-          <input id="avatarImage" type="text" [(ngModel)]="imgAvatar" name="imgAvatar" class="validate">
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader">
           <label for="avatarImage">Avatar Image</label>
         </div>
       </div>
@@ -79,7 +79,7 @@
             <textarea id="textarea1" [(ngModel)]="newFood.review" name="review" class="materialize-textarea" data-length="100"></textarea>
             <label for="textarea1">Textarea</label>
           </div>
-            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Sign Up</button>
+            <button (click)="createFood(food)" type='submit' name='btn_submit' class='col s12 btn btn-large waves-effect indigo'>Submit</button>
       </div>
 
     </form>

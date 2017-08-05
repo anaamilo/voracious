@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Food = require('../models/Food');
+const upload = require('../config/multer');
 
 
 router.get('/', (req, res, next) => {
@@ -13,8 +14,8 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.post('/', (req, res, next) => {
-  console.log(req.user);
+router.post('/', upload.single('file'), (req, res, next) => {
+  console.log(hola);
   const theFood = new Food({
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
@@ -26,7 +27,8 @@ router.post('/', (req, res, next) => {
     restaurantAddress: req.body.restaurantAddress,
     restaurantFoodName: req.body.restaurantFoodName,
     review: req.body.review,
-    image: req.body.image || ''
+    imgAvatar: `/uploads/${req.file.filename}`
+    //req.body.image || ''
   });
   console.log('POST');
   console.log(theFood);
@@ -70,7 +72,7 @@ router.put('/:id', (req, res) => {
     restaurantAddress: req.body.restaurantAddress,
     restaurantFoodName: req.body.restaurantFoodName,
     review: req.body.review,
-    image: req.body.image
+    imgAvatar: req.body.image
   };
 
   Food.findByIdAndUpdate(req.params.id, updates, (err) => {

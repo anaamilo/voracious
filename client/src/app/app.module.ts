@@ -15,7 +15,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { FoodListComponent } from './food-list/food-list.component';
 import { NewFoodComponent } from './new-food/new-food.component';
 import { FoodDetailsComponent } from './food-details/food-details.component';
-
+import { FileSelectDirective } from "ng2-file-upload";
 
 
 
@@ -27,7 +27,8 @@ import { FoodDetailsComponent } from './food-details/food-details.component';
     HomepageComponent,
     FoodListComponent,
     NewFoodComponent,
-    FoodDetailsComponent
+    FoodDetailsComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

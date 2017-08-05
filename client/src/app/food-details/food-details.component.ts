@@ -16,15 +16,8 @@ export class FoodDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.getFoodDetails(params['id']);
-    });
-  }
-
-  getFoodDetails(id) {
-    this.foodService.get(id)
-      .subscribe((food) => {
-        this.food = food;
+    this.route.data.subscribe((resolved) => {
+        this.food = resolved['food'];
       });
-  }
+    }
 }
