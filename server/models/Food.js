@@ -3,12 +3,8 @@ const Schema = mongoose.Schema;
 
 const FoodSchema = new Schema({
 
-  foodName: {type: String, required: true},
-  foodCategory: {
-    type: String,
-    required: true,
-    enum: ['Cocina Española', 'Cocina Boliviana', 'Cocina Italiana', 'Cocina Americana', 'Cocina Japonesa'],
-  },
+  foodName: {type: String},
+  foodCategory: {type: String,},
   foodSubCategory: {type: String },
   foodCreator: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   price: {type:Number},

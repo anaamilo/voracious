@@ -15,12 +15,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', upload.single('file'), (req, res, next) => {
-  console.log(hola);
+  console.log("hola");
   const theFood = new Food({
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
-    foodSubCategory: req.body.SubCategory,
-    // foodCreator: req.user._id,
+    foodSubCategory: req.body.foodSubCategory,
     price: req.body.price,
     rate: req.body.rate,
     restaurantName: req.body.restaurantName,
@@ -28,7 +27,6 @@ router.post('/', upload.single('file'), (req, res, next) => {
     restaurantFoodName: req.body.restaurantFoodName,
     review: req.body.review,
     imgAvatar: `/uploads/${req.file.filename}`
-    //req.body.image || ''
   });
   console.log('POST');
   console.log(theFood);
