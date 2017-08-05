@@ -39,4 +39,5 @@ import { FoodDetailsComponent } from './food-details/food-details.component';
   providers: [SessionService, FoodService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
