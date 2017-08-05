@@ -24,17 +24,17 @@ export class LoginComponent implements OnInit {
         (user) => this.router.navigate(['/home']),
         (err) => this.error = err
       );
-<<<<<<< HEAD
+
       console.log(`${this.username} is logged`);
         (user) =>   this.router.navigate(['/home']);
         (err) => this.error = err
-=======
+
 
       console.log(`${this.username} is logged`);
 
         (user) =>   this.router.navigate(['/home']);
         (err) => this.error = err;
->>>>>>> aa9f8e3a29c0002758be34fffcbd190b18396507
+
       console.log(`${this.username} incorrect user`);
 
     }
