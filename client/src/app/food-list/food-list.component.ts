@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodService } from '../../services/food.service';
 import { Observable } from 'rxjs';
+import $ from 'jquery'
 
 @Component({
   selector: 'app-food-list',
@@ -17,5 +18,8 @@ export class FoodListComponent implements OnInit {
       .subscribe((foods) => {
         this.foods = foods;
       });
+
+
+
   }
 }

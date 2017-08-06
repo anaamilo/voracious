@@ -1,0 +1,44 @@
+/*.card {
+  height: 100px;
+  background: yellow;
+  border:1px solid black;
+  border-radius: 20px;
+}*/
+
+.subtitle .card-panel{
+  padding:5px;
+}
+
+.addbutton {
+  margin-bottom:10px;
+}
+
+
+
+
+h1 {
+  color: #FFF;
+}
+
+h5 {
+  background: #bf2c2c;
+
+}
+
+.card-content span {
+  margin-right:20px;
+}
+
+.foodlistheader{
+margin-top: 30px;
+height:150px;
+background-image: linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ), url("../../assets/foodlist.jpg");
+background-size:cover;
+background-position: center center;
+background-repeat: no-repeat;
+border-radius: 10px;
+border-left: 10px solid #c52525;
+}

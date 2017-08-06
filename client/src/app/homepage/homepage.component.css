@@ -49,6 +49,13 @@ h2 {
 .foodtile {
   height:150px;
   border: 2px solid #CCC;
+  padding:0;
+}
+
+.foodtile a {
+   display:block;
+    width:100%;
+    height:100%;
 }
 
 .foodtile a:active, a:visited {
@@ -60,8 +67,9 @@ h2 {
 }
 
 .foodtile h5 {
-  margin-top: 60px
+  line-height: 6;
 }
+
 
 .foodcategory {
   background-position: center center;
@@ -109,10 +117,7 @@ footer {
 }
 
 .sushi {
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
-      ), url("../../assets/sushi.jpg");
+    background-image: url("../../assets/sushi.jpg");
 }
 
 .pique {
