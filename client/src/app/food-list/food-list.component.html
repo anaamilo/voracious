@@ -5,6 +5,6 @@
   <div *ngFor="let food of foods" class="blocky">
     <img height=150 [src]='"http://localhost:3000/"+food.imgAvatar' />
     <h3> {{ food.foodName }} </h3>
-    <a [routerLink]="['foods', food._id]"> View Details </a>
+    <a [routerLink]="[food._id]"> View Details </a>
   </div>
 </div>
