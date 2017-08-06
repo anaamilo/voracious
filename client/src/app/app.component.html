@@ -3,9 +3,10 @@
   <div class="nav-wrapper indigo darken-1">
     <a href="#" class="brand-logo right">Voracious</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li *ngIf="session.user && session.startLoginCompleted"> Welcome {{session.user.username}}</li>
+      <li *ngIf="session.user && session.startLoginCompleted"><strong class="red"> Welcome {{session.user.username}}</strong></li>
       <li *ngIf="!session.user && session.startLoginCompleted"><a [routerLink]="['signup']">Signup</a></li>
       <li *ngIf="!session.user && session.startLoginCompleted"><a [routerLink]="['login']">Login</a></li>
+      <li *ngIf="session.user && session.startLoginCompleted"><a [routerLink]="['profile']">Your Profile</a> </li>
       <li><a [routerLink]="['foods']">Foods</a></li>
       <li><a [routerLink]="['']">Home</a></li>
       <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()">Logout</a></li>

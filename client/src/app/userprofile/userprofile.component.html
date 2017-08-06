@@ -1,0 +1,60 @@
+
+
+<div *ngIf="user" class="container ">
+
+  <div class="row ">
+    <div class="col s4 l3 profilepic ">
+
+
+          <div class="card">
+            <div class="card-image">
+              <img class="img-responsive" src="./assets/lombarda.jpg">
+            </div>
+            <div class="card-content">
+              <p></p>
+            </div>
+
+          </div>
+          <a class="waves-effect waves-light btn orange">Edit</a>
+          <a class="waves-effect waves-light btn red">Delete</a>
+  </div>
+  <div class="col s4 l6">
+<h1>{{user.username}}</h1>
+    <hr>
+    <span class="tabul1"><strong>Name:</strong></span><span class="tabul2">{{user.name }}</span>
+    <p>
+    <span class="tabul1"><strong>Last Name:</strong></span><span class="tabul2">{{user.lastname }}</span>
+  </p>
+  <span class="tabul1"><strong>E-mail:</strong></span><span class="tabul2"><a href="mailto:{{user.email}}">{{user.email }}</a></span>
+  <p>
+  <span class="tabul1"><strong>City:</strong></span><span class="tabul2">{{user.city }}</span>
+</p>
+<p>
+  <span class="tabul1"><strong>Birthdate:</strong></span><span class="tabul2">{{user.birthdate }}</span>
+</p>
+<p>
+  <strong>Description:</strong>
+</p>
+<p>
+  {{user.description }}
+</p>
+
+  <form action="#">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+  </form>
+
+
+</div>
+</div>
+
+
+
+</div>

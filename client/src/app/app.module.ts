@@ -16,7 +16,8 @@ import { FoodListComponent } from './food-list/food-list.component';
 import { NewFoodComponent } from './new-food/new-food.component';
 import { FoodDetailsComponent } from './food-details/food-details.component';
 import { FileSelectDirective } from "ng2-file-upload";
-
+import { FoodActivationService} from '../services/food-activation.service';
+import { UserprofileComponent } from './userprofile/userprofile.component'
 
 
 
@@ -30,7 +31,8 @@ import { FileSelectDirective } from "ng2-file-upload";
     FoodListComponent,
     NewFoodComponent,
     FoodDetailsComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { FileSelectDirective } from "ng2-file-upload";
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService, FoodService],
+  providers: [SessionService, FoodService, FoodActivationService],
   bootstrap: [AppComponent]
 })
 

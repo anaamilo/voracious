@@ -25,21 +25,5 @@ export class LoginComponent implements OnInit {
         (err) => this.error = err
         // console.log(`${this.username} incorrect user`);;
       );
-
-<<<<<<< HEAD
-      console.log(`${this.username} is logged`);
-        (user) =>   this.router.navigate(['/home']);
-        (err) => this.error = err
-
-
-      console.log(`${this.username} is logged`);
-
-        (user) =>   this.router.navigate(['/home']);
-        (err) => this.error = err;
-
-      console.log(`${this.username} incorrect user`);
-=======
->>>>>>> 92f9d1817a44a540e2aa697eb100ec4bdfe93a29
-
     }
   }
