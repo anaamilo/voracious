@@ -3,15 +3,26 @@
   <div class="nav-wrapper indigo darken-1">
     <a href="#" class="brand-logo right">Voracious</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-
-      <li *ngIf="(!user)"><a [routerLink]="['login']">Login</a></li>
-      <li *ngIf="(!user)"><a [routerLink]="['signup']">Sign Up</a></li>
-      <li *ngIf="(user)">Hola {{user.username}}</li>
+      <li *ngIf="session.user && session.startLoginCompleted"> Welcome {{session.user.username}}</li>
+      <li *ngIf="!session.user && session.startLoginCompleted"><a [routerLink]="['signup']">Signup</a></li>
+      <li *ngIf="!session.user && session.startLoginCompleted"><a [routerLink]="['login']">Login</a></li>
       <li><a [routerLink]="['foods']">Foods</a></li>
       <li><a [routerLink]="['']">Home</a></li>
+      <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()">Logout</a></li>
     </ul>
   </div>
 </nav>
+
+<!-- <app-login-form *ngIf="!session.user && session.startLoginCompleted"></app-login-form>
+<div *ngIf="session.user && session.startLoginCompleted">
+  <pre>{{ session.user | json }}</pre>
+  <button (click)="logout()">Logout</button>
+</div>
+<div *ngIf="session.user && session.startLoginCompleted">
+  <pre>{{ session.user | json }}</pre>
+  <button (click)="logout()">Logout</button>
+</div> -->
+
 
 
 <!-- <h1> hola soy la lombarda principal </h1>
