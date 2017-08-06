@@ -9,7 +9,7 @@
       <div class="subtitle">
       <div class="col s10 offset-s1">
         <div class="card-panel green lighten-1">
-          <h5 class="white-text center-align">Descubre y agrega las comidas más ricas del momento!</h5>
+          <h4 class="white-text center-align">Descubre y agrega las comidas más ricas del momento!</h4>
       </div>
     </div>
 </div>
@@ -21,9 +21,31 @@
   </div>
 </div>
 
+<div class="row">
+<div *ngFor="let food of foods"  class="col s4">
 
-<div *ngFor="let food of foods"  class="row">
-        <div class="col s5 offset-s3">
+          <div class="card">
+            <div class="card-image">
+
+              <img class="foodpic img-responsive" [src]='"http://localhost:3000/"+food.imgAvatar' />
+              <span class="card-title">  <h5> {{ food.foodName }} </h5></span>
+            </div>
+            <div class="card-content">
+              <p>{{food.review}}</p>
+              <br>
+              <span><strong>Restaurant:</strong>{{ food.restaurantName }}</span>
+              <span> <strong>Rate:</strong>{{ food.rate }}/5</span>
+            </div>
+            <div class="card-action">
+              <a class="btn" [routerLink]="[food._id]">Food Details</a>
+
+            </div>
+          </div>
+
+</div>
+</div>
+
+        <!-- <div class="col s5 offset-s3">
           <div class="card">
             <div class="card-image">
 
@@ -41,7 +63,7 @@
 
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 

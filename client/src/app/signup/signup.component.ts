@@ -35,13 +35,7 @@ export class SignupComponent implements OnInit {
  });
   }
 
-  login() {
-    this.session.login(this.username,this.password)
-      .subscribe(
-        (user) => console.log(user),
-        (err) => this.error = err
-      );
-  }
+
 
   signup() {
     console.log(this.newUser);
