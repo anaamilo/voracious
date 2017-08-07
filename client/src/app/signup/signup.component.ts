@@ -44,14 +44,14 @@ export class SignupComponent implements OnInit {
         (user) => console.log(user),
         (err) => this.error = err
       );
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
       console.log(`${this.username} is created`)
   }
 
   logout() {
     this.session.logout()
       .subscribe(
-        (user) => console.log(user),
+        (user) => console.log(`${user} has logged out`),
         (err) => this.error = err
       );
 }

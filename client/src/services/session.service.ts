@@ -41,6 +41,7 @@ export class SessionService {
     return this.http.post(`${this.BASE_URL}/login`, {username,password}, this.options)
       .map(res => {
         this.user = res.json();
+        console.log(this.user)
         return this.user;
       })
       .catch(this.handleError);

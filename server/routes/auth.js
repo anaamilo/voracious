@@ -116,6 +116,11 @@ authRoutes.get('/loggedin', ensureLoginOrJsonError(), (req, res, next) => {
   return res.status(200).json(req.user);
 });
 
+
+authRoutes.get('/profile', ensureLoginOrJsonError(), (req, res, next) => {
+  return res.status(200).json(req.user);
+});
+
 //Secret route
 authRoutes.get('/private', ensureLoginOrJsonError(), (req, res, next) => {
   return res.json({
