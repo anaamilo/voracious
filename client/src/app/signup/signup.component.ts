@@ -41,10 +41,9 @@ export class SignupComponent implements OnInit {
     console.log(this.newUser);
     this.session.signup(this.newUser)
     .subscribe(
-        (user) => console.log(user),
+        (user) =>       this.router.navigate(['/login']),
         (err) => this.error = err
       );
-      this.router.navigate(['/login']);
       console.log(`${this.username} is created`)
   }
 
