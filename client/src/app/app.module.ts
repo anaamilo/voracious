@@ -18,7 +18,7 @@ import { FoodDetailsComponent } from './food-details/food-details.component';
 import { FileSelectDirective } from "ng2-file-upload";
 import { FoodActivationService} from '../services/food-activation.service';
 import { UserprofileComponent } from './userprofile/userprofile.component'
-
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 
 
@@ -39,7 +39,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component'
     FormsModule,
     MaterializeModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    Ng2AutoCompleteModule
   ],
   providers: [SessionService, FoodService, FoodActivationService],
   bootstrap: [AppComponent]

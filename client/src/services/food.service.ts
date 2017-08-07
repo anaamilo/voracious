@@ -29,6 +29,11 @@ export class FoodService {
        .map((res) => res.json());
    }
 
+   getSearch() {
+     return this.http.get(`${this.BASE_URL}/search`)
+       .map((res) => res.json());
+   }
+
    createFood(food):Observable<Food>{
      return this.http.post(`${this.BASE_URL}`, food,this.options)
      .map(res => res.json())

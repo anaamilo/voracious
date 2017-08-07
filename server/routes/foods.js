@@ -16,6 +16,17 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get('/search', (req, res, next) => {
+  Food.find({}, {foodName:1, _id:0}, (err, foodsList) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    console.log(foodsList);
+    res.json(foodsList);
+  });
+});
+
 router.post('/', upload.single('file'), (req, res, next) => {
   console.log("hola");
   const theFood = new Food({
