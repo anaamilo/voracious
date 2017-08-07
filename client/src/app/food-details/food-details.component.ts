@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { FoodService } from '../../services/food.service';
+
 
 
 @Component({
@@ -10,14 +11,37 @@ import { FoodService } from '../../services/food.service';
 })
 export class FoodDetailsComponent implements OnInit {
 
+
   food:any;
 
-  constructor(private route: ActivatedRoute, private foodService: FoodService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private foodService: FoodService)
+    {}
 
-  ngOnInit() {
-    this.route.data.subscribe((resolved) => {
-        this.food = resolved['food'];
-      });
+
+
+    ngOnInit() {
+        this.route.params.subscribe(params => {
+          this.getFoodDetails(params['id']);
+        });
+      }
+
+      getFoodDetails(id) {
+        this.foodService.get(id)
+          .subscribe((food) => {
+            this.food = food;
+          });
+      }
+
+
+    deleteFood() {
+    if (window.confirm('Are you sure?')) {
+      this.foodService.remove(this.food._id)
+        .subscribe(() => {
+          this.router.navigate(['']);
+        });
     }
+  }
 }
