@@ -40,6 +40,12 @@ uploader: FileUploader = new FileUploader({
 
 
   ngOnInit() {
+
+    $('select').material_select();
+  $('select').change((e) => {
+       this.newFood[e.currentTarget.name] = e.currentTarget.value;
+  });
+
   }
 
 

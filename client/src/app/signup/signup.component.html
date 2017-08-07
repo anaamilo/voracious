@@ -9,14 +9,14 @@
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
           <input id="username" type="text" [(ngModel)]="newUser.username"
-          name="username" #myUsername="ngModel"  minlength="6" required>
+          name="username" #myUsername="ngModel" class="validate" minlength="6" required>
           <label for="username"> Username</label>
         </div>
         <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
 
           <p class="error" [hidden]="!myUsername.errors.required">
          Please enter a Name
-         <p>
+       </p>
           <p class="error" [hidden]="!myUsername.errors.minlength">
             Name must be at least 6 characters long
           </p>
