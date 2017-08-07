@@ -60,5 +60,8 @@ uploader: FileUploader = new FileUploader({
       form.append('review', this.newFood.review);
     };
     this.uploader.uploadAll();
+    this.router.navigate(['/foods']);
+
   }
+
 }

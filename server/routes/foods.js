@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const Food = require('../models/Food');
 const upload = require('../config/multer');
+const mongoose = require ('mongoose');
+
 
 
 router.get('/', (req, res, next) => {
@@ -54,7 +56,7 @@ router.get('/:id', (req, res) => {
     });
 });
 router.put('/:id', (req, res) => {
-  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+  if(!mongoose.Types.ObjectId.isValid(req.params._id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
@@ -62,15 +64,14 @@ router.put('/:id', (req, res) => {
   const updates = {
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
-    foodSubCategory: req.body.SubCategory,
-    foodCreator: req.user._id,
+    foodSubCategory: req.body.foodSubCategory,
     price: req.body.price,
     rate: req.body.rate,
     restaurantName: req.body.restaurantName,
     restaurantAddress: req.body.restaurantAddress,
     restaurantFoodName: req.body.restaurantFoodName,
     review: req.body.review,
-    imgAvatar: req.body.image
+    imgAvatar: `/uploads/${req.file.filename}`
   };
 
   Food.findByIdAndUpdate(req.params.id, updates, (err) => {
@@ -97,7 +98,7 @@ router.delete('/:id', (req, res) => {
     }
 
     return res.json({
-      message: 'The food has been removed!'
+      message: 'This food has been removed!'
     });
   });
 });

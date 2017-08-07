@@ -7,9 +7,9 @@ import { environment } from '../environments/environment';
 
 
 export interface Food{
-  _id:string,
+   _id:string,
 
-}
+ }
 
 @Injectable()
 export class FoodService {
@@ -21,7 +21,6 @@ export class FoodService {
    constructor(private http: Http) {}
 
    handleError(e) {
-     console.error("Error en la llamada a la API");
      return Observable.throw(e.json().message);
    }
 

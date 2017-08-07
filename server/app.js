@@ -9,6 +9,7 @@ const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
+const methodOverride = require('method-override');
 const urlDB = process.env.MONGO_URL;
 
 

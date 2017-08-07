@@ -28,7 +28,6 @@ export class SessionService {
   }
 
   handleError(e) {
-    console.error("Error en la llamada a la API");
     return Observable.throw(e.json().message);
   }
 

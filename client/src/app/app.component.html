@@ -2,13 +2,15 @@
 <nav>
   <div class="nav-wrapper indigo darken-1">
     <a href="#" class="brand-logo right">Voracious</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <a *ngIf="user"> Hola {{ User.username }} </a>
 
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li *ngIf="(!user)"><a [routerLink]="['login']">Login</a></li>
       <li *ngIf="(!user)"><a [routerLink]="['signup']">Sign Up</a></li>
-      <li *ngIf="(user)">Hola {{user.username}}</li>
       <li><a [routerLink]="['foods']">Foods</a></li>
       <li><a [routerLink]="['']">Home</a></li>
+
+
     </ul>
   </div>
 </nav>
