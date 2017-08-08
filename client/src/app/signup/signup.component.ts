@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionService} from '../../services/session.service';
 import { Router } from '@angular/router';
+import { FileUploader } from "ng2-file-upload";
+import {environment} from '../../environments/environment';
 import $ from 'jquery';
 
 
@@ -10,6 +12,9 @@ import $ from 'jquery';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  uploader: FileUploader = new FileUploader({
+    url: `http://localhost:3000/api/auth/signup`
+   });
 
   error: string;
   username:string;
@@ -18,6 +23,7 @@ export class SignupComponent implements OnInit {
     username: '',
     password: '',
     name: '',
+    avatarImage: '',
     lastname: '',
     email: '',
     city: '',

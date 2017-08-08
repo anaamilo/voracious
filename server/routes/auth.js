@@ -1,6 +1,7 @@
 const express    = require('express');
 const passport   = require('passport');
 const bcrypt     = require('bcrypt');
+const upload = require('../config/multer');
 const User       = require('../models/User');
 const authRoutes = express.Router();
 
@@ -12,20 +13,19 @@ function returnMessage(message){
 authRoutes.get('/signup',returnMessage("This should be a POST"));
 
 //Sign-up POST route
-authRoutes.post('/signup', (req, res, next) => {
-
+authRoutes.post('/signup',upload.single('file'), (req, res, next) => {
+console.log(req.file);
   const {
     username,
     password,
     name,
     lastname,
     email,
-    avatarImage,
     city,
     birthdate,
     description
   } = req.body;
-
+avatarImage = `/uploads/${req.file.filename}`;
   if(!username || !password) {
     res.status(400).json({
       message:'Please provide matching username and/or password'
@@ -60,6 +60,7 @@ authRoutes.post('/signup', (req, res, next) => {
       res.status(500).json({
         message: 'Oops..something went wrong'
       });
+      console.log(err);
       return;
     }
     res.status(200).json(req.user);

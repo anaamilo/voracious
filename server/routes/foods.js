@@ -4,6 +4,16 @@ const Food = require('../models/Food');
 const upload = require('../config/multer');
 const mongoose = require ('mongoose');
 
+// const ({
+//   username: req.body.username,
+//   password: req.body.password,
+//   name: req.body.name,
+//   lastname: req.body.lastname,
+//   email: req.body.email,
+//   city: req.body.city,
+//   birthdate: req.body.birthdate,
+//   description: req.body.description
+// });
 
 
 router.get('/', (req, res, next) => {
@@ -17,7 +27,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/search', (req, res, next) => {
-  Food.find({}, {foodName:1, _id:0}, (err, foodsList) => {
+  Food.find({}, {foodName:1, foodSubCategory:1, _id:0}, (err, foodsList) => {
     if (err) {
       res.json(err);
       return;
@@ -28,7 +38,7 @@ router.get('/search', (req, res, next) => {
 });
 
 router.post('/', upload.single('file'), (req, res, next) => {
-  console.log("hola");
+  console.log(req.file.filename);
   const theFood = new Food({
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
@@ -51,26 +61,19 @@ router.post('/', upload.single('file'), (req, res, next) => {
   }).catch( error => res.json(error));
 });
 
-router.get('foodCategory/:category', (req, res) => {
-  const {category} = req.params;
-
-  Food.find({foodCategory: {$in: [category]}}).then( foods => {
-    res.json(foods);
-  }).catch( e => {
-    res.json(err);
-  });
-});
-
 router.get('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
 
-  Food.findById(req.params.id).then( theFood => {
+  Food.findById(req.params.id, (err, theFood) => {
+      if (err) {
+        res.json(err);
+        return;
+      }
+
       res.json(theFood);
-    }).catch( error => {
-      res.json(error);
     });
 });
 router.put('/:id', (req, res) => {
