@@ -2,7 +2,7 @@ const Food = require('../models/Food');
 const mongoose = require('mongoose');
 const urlDB = process.env.MONGO_URL;
 mongoose.connect(urlDB)
-  .then(() => {
+
     let foods = [
       {
         foodName: 'Pizza Diavola',
@@ -11,6 +11,7 @@ mongoose.connect(urlDB)
         price: 7,
         rate: 3,
         imgAvatar: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250",
+        restaurantName: 'Don Giovanni',
         restaurantAddress: 'Via Cordova 13',
         restaurantFoodName: 'Pizza Diavoletto',
         review: 'Pizza tasted great!',
@@ -26,6 +27,7 @@ mongoose.connect(urlDB)
         price: 13,
         rate: 5,
         imgAvatar: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250",
+        restaurantName: 'Casa Bolivia',
         restaurantAddress: 'Calle Ponzano 5',
         restaurantFoodName: 'Pique Macho casero de Marifer',
         review: 'Aútentico Pique Macho que lleva de todo, locoto incluido.',
@@ -41,6 +43,7 @@ mongoose.connect(urlDB)
         price: 3,
         rate: 2,
         imgAvatar: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250"
+        restaurantName: 'Casa Kebab',
         restaurantAddress: "Calle Ponzano 5",
         restaurantFoodName: 'Kebab de Dani',
         review: 'Un Kebab de otro curso',
@@ -51,15 +54,8 @@ mongoose.connect(urlDB)
       },
     ];
 
-    let foodsObj = foods.map( p => new Food(p));
-
-    foodsObj.forEach( p => p.save( (err, obj) =>{
-      if(err){
-        console.log(err);
-      }else{
-        console.log(`New food created [${obj.name}] with ID:${obj._id}`);
-      }
-    }));
-
-    //mongoose.connection.close();
+    Food.create(foods, (err, food
+      if (err) {throw(err)}; }
+      console.lolg("Success seed", foods);
+      mongoose.connection.close();
   });
