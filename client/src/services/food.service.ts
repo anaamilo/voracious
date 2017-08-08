@@ -40,11 +40,18 @@ export class FoodService {
      .catch(this.handleError);
  }
 
+ getFoodCategory(category){
+   return this.http.get(`${this.BASE_URL}/foodCategory/${category}`)
+   .map(res => res.json())
+   .catch(this.handleError);
+ }
+
 
    get(id) {
      return this.http.get(`${this.BASE_URL}/${id}`)
        .map((res) => res.json());
    }
+
 
    edit(food) {
      return this.http.put(`${this.BASE_URL}/${food.id}`, food)

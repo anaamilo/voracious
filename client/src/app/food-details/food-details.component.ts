@@ -31,6 +31,7 @@ export class FoodDetailsComponent implements OnInit {
       getFoodDetails(id) {
         this.foodService.get(id)
           .subscribe((food) => {
+            console.log(food)
             this.food = food;
           });
       }

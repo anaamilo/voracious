@@ -12,7 +12,10 @@
       <li *ngIf="session.user && session.startLoginCompleted"><a [routerLink]="['profile']">Your Profile</a> </li>
       <li><a [routerLink]="['foods']">Foods</a></li>
       <li><a [routerLink]="['']">Home</a></li>
-      <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()" [routerLink]="['home']">Logout</a></li>
+
+      <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()" [routerLink]="['login']">Logout</a></li>
+
+
     </ul>
   </div>
 </nav>
