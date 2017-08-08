@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 
 export interface Food{
    _id:string,
+   foodCategory: string
 
  }
 
@@ -40,8 +41,9 @@ export class FoodService {
      .catch(this.handleError);
  }
 
- getFoodCategory(category){
-   return this.http.get(`${this.BASE_URL}/foodCategory/${category}`)
+ getFoodCategory(foodCategory){
+   console.log("FOOD SERVICE", foodCategory);
+   return this.http.get(`${this.BASE_URL}/category/${foodCategory}`)
    .map(res => res.json())
    .catch(this.handleError);
  }

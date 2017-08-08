@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { FoodService } from '../../services/food.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-food-category',
@@ -9,23 +11,27 @@ import { FoodService } from '../../services/food.service';
 })
 export class FoodCategoryComponent implements OnInit {
 
-food:any;
+  foods: Observable<Array<object>>;
+
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private foodService: FoodService
+    public route: ActivatedRoute,
+    public router: Router,
+    public foodService: FoodService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.getFoodCategory(params['category']);
+      this.getFoodCategory(params['foodCategory']);
+      console.log(params);
     });
   }
-  getFoodCategory(category) {
-    this.foodService.get(category)
-      .subscribe((food) => {
-        console.log(food)
-        this.food = food;
+
+  getFoodCategory(foodCategory) {
+    console.log("COMPONENT", foodCategory)
+    this.foodService.getFoodCategory(foodCategory)
+      .subscribe((foods) => {
+        console.log(foods)
+        this.foods = foods;
       });
   }
 

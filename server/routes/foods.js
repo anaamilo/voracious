@@ -51,13 +51,15 @@ router.post('/', upload.single('file'), (req, res, next) => {
   }).catch( error => res.json(error));
 });
 
-router.get('foodCategory/:category', (req, res) => {
-  const {category} = req.params;
 
-  Food.find({foodCategory: {$in: [category]}}).then( foods => {
-    res.json(foods);
+
+router.get('/category/:foodCategory', (req, res) => {
+  const foodCategory = req.params;
+  console.log("BACK", foodCategory);
+  Food.find( foodCategory ).then( food => {
+    res.json(food);
   }).catch( e => {
-    res.json(err);
+    res.json(e);
   });
 });
 
