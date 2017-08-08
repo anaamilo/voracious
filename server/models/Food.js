@@ -4,8 +4,11 @@ const Schema = mongoose.Schema;
 const FoodSchema = new Schema({
 
   foodName: {type: String},
-  foodCategory: {type: String,},
-  foodSubCategory: {type: String },
+  foodCategory: {
+    type: String,
+    enum: ['italiana', 'española','mexicana', 'boliviana', 'fast-food', 'japonesa']
+  },
+  foodSubCategory: {type: String,},
   foodCreator: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   price: {type:Number},
   rate: {type:Number},

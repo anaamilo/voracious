@@ -1,0 +1,3 @@
+.ng-stouched.ng-invalid {
+  border-color: red;
+}

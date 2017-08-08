@@ -1,88 +1,169 @@
 <div class="container">
-    <form class="col s12" (ngSubmit)="createFood(myForm)" #myForm="ngForm">
+  <h1> Create New Food</h1>
 
-      <div class="row">
+  <div class="card-panel grey lighten-4">
 
-
-        <div class="input-field col s6">
-             <i class="material-icons prefix">icon name</i>
-             <input id="icon_prefix" type="text" [(ngModel)]="newFood.foodName" name="foodName" class="validate">
-             <label for="foodName">Food Name</label>
-           </div>
-
-        <div class="input-field col s6">
-          <i class="material-icons prefix">icon name</i>
-          <input id="category" type="text" [(ngModel)]="newFood.foodCategory" name="foodCategory" class="validate">
-
-          <label for="foodCategory">Food Category</label>
-        </div>
-      </div>
+    <form class="col s12" (ngSubmit)="createFood(myForm)" #myForm="ngForm" novalidate>
 
       <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">icon name</i>
-          <input id="subC" type="text" [(ngModel)]="newFood.foodSubCategory" name="foodSubCategory" class="validate">
-          <label for="foodSubCategory">Food SubCategory</label>
-        </div>
+             <i class="material-icons prefix">local_dining</i>
+             <input id="icon_prefix" type="text" [(ngModel)]="newFood.foodName"
+             name="foodName" #myFoodName="ngModel" class="validate" minlength="3" required>
+            <label for="foodName">Food Name</label>
+          </div>
+             <div *ngIf="myFoodName.errors && (myFoodName.dirty || myFoodName.touched)">
+               <p class="error" [hidden]="!myFoodName.errors.required">
+              Please enter a Food Name
+             </p>
+           </div>
+       </div>
+
+       <!-- <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">featured_play_list</i>
+          <input id="category" type="text" [(ngModel)]="newFood.foodCategory"
+          name="foodCategory" #myFoodCategory="ngModel" class="validate" required>
+
       </div>
+      <div *ngIf="myFoodCategory.errors && (myFoodCategory.dirty || myFoodCategory.touched)">
+        <p class="error" [hidden]="!myFoodCategory.errors.required">
+       Please enter a Food Category
+     </p>
+      </div>
+    </div> -->
 
 <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">icon name</i>
-        <input id="foodP" type="number" [(ngModel)]="newFood.price" name="price" class="validate">
+    <div class="input-field col s12">
+            <i class="material-icons prefix">featured_play_list</i>
+        <select id="category" type="text" [(ngModel)]="newFood.foodCategory"
+        name="foodCategory" #myFoodCategory="ngModel" class="validate" required>
+          <option value="" disabled selected>Choose your Food Category</option>
+          <option value="italiana">cocina italiana</option>
+          <option value="española">cocina española</option>
+          <option value="mexicana">cocina mexicana</option>
+          <option value="boliviana">cocina boliviana</option>
+          <option value="fast-food">cocina fast-food</option>
+          <option value="japonesa">cocina japonesa</option>
+        </select>
+        <label>Materialize Select</label>
+      </div>
+      <div *ngIf="myFoodCategory.errors && (myFoodCategory.dirty || myFoodCategory.touched)">
+        <p class="error" [hidden]="!myFoodCategory.errors.required">
+       Please enter a Food Category
+     </p>
+      </div>
+    </div>
+
+
+
+      <div class="row">
+       <div class="input-field col s12">
+         <i class="material-icons prefix">filter_list</i>
+         <input id="subC" type="text" [(ngModel)]="newFood.foodSubCategory" name="foodSubCategory" class="validate">
+         <label for="foodSubCategory">Food SubCategory</label>
+       </div>
+     </div>
+
+<div class="row">
+      <div class="input-field col s5">
+        <i class="material-icons prefix">attach_money</i>
+        <input id="foodP" type="number"
+        [(ngModel)]="newFood.price" #myPrice="ngModel" required name="price" class="validate">
         <label for="price">Food Price</label>
       </div>
+
+
+
+            <div class="input-field col s5">
+              <i class="material-icons prefix">star_border</i>
+              <input id="foodR" type="number" [(ngModel)]="newFood.rate"
+              name="rate" #myRate="ngModel" required class="validate">
+              <label for="rate">Rate your food</label>
+            </div>
+          <div *ngIf="myRate.errors && (myRate.dirty || myRate.touched)">
+            <p class="error" [hidden]="!myRate.errors.required">
+           Please enter a Rate
+         </p>
         </div>
+</div>
 
 <div class="row">
-    <div class="input-field col s6">
-      <i class="material-icons prefix">icon name</i>
-      <input id="foodR" type="number" [(ngModel)]="newFood.rate" name="rate" class="validate">
-      <label for="rate">Food Rate</label>
-    </div>
-  </div>
+  <div class="col s6" *ngIf="myPrice.errors && (myPrice.dirty || myPrice.touched)">
+    <p class="error" [hidden]="!myPrice.errors.required">
+   Please enter a Price
+  </p>
+</div>
+</div>
 
 
       <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">image</i>
-          <input type="file" name="file" ng2FileSelect [uploader]="uploader">
-          <label for="imgAvatar">Avatar Image</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix"> nombre icono</i>
-          <input id="city" type="text"[(ngModel)]="newFood.restaurantName" name="restaurantName" class="validate">
+          <i class="material-icons prefix">restaurant</i>
+          <input id="city" type="text"[(ngModel)]="newFood.restaurantName"
+           name="restaurantName" #myRestaurant="ngModel" required class="validate">
           <label for="restaurantName">Restaurant Name</label>
         </div>
+        <div *ngIf="myRestaurant.errors && (myRestaurant.dirty || myRestaurant.touched)">
+          <p class="error" [hidden]="!myRestaurant.errors.required">
+         Please enter the name of the Restaurant
+       </p>
       </div>
-
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix"> nombre icono</i>
-          <input id="city" type="text"[(ngModel)]="newFood.restaurantAddress" name="restaurantAddress" class="validate">
-          <label for="restaurantAddress">Restaurant Address</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix"> nombre icono</i>
-          <input id="city" type="text"[(ngModel)]="newFood.restaurantFoodName" name="restaurantFoodName" class="validate">
-          <label for="restaurantFoodName">Restaurant Food Name</label>
-        </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-              <i class="material-icons prefix">description</i>
-            <textarea id="textarea1" [(ngModel)]="newFood.review" name="review" class="materialize-textarea" data-length="100"></textarea>
-            <label for="review">Textarea</label>
+          <i class="material-icons prefix"> location_on</i>
+          <input id="city" type="text"[(ngModel)]="newFood.restaurantAddress"
+           name="restaurantAddress" #myRestaurantAddress="ngModel" required class="validate">
+          <label for="restaurantAddress">Restaurant Address</label>
+        </div>
+
+      <div *ngIf="myRestaurantAddress.errors && (myRestaurantAddress.dirty || myRestaurantAddress.touched)">
+        <p class="error" [hidden]="!myRestaurantAddress.errors.required">
+       Please enter the Restaurant Address
+     </p>
+    </div>
+    </div>
+
+
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix"> room_service</i>
+          <input id="city" type="text"[(ngModel)]="newFood.restaurantFoodName"
+           name="restaurantFoodName" #myRestaurantFoodName="ngModel" required class="validate">
+          <label for="restaurantFoodName">Restaurant Food Name</label>
+        </div>
+        <div *ngIf="myRestaurantFoodName.errors && (myRestaurantFoodName.dirty || myRestaurantFoodName.touched)">
+          <p class="error" [hidden]="!myRestaurantFoodName.errors.required">
+         Please enter the Restaurant Food Name
+       </p>
+      </div>
+    </div>
+
+
+    <div class="file-field input-field">
+   <div class="btn">
+     <span>Food Image</span>
+     <input type="file" name="imgAvatar" ng2FileSelect [uploader]="uploader">
+   </div>
+   <div class="file-path-wrapper">
+     <input name="imgAvatar" class="file-path validate" type="text">
+   </div>
+ </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+              <i class="material-icons prefix">rate_review</i>
+            <textarea id="textarea1" [(ngModel)]="newFood.review"
+            name="review" class="materialize-textarea"></textarea>
+            <label for="review">Review</label>
           </div>
             <button type="button"(click)="createFood(food)" name='btn_submit' class='col s12 btn btn-large waves-effect indigo'>Submit</button>
       </div>
 
     </form>
   </div>
+  </div>
+
+  <p class="error"> {{ error }} </p>
