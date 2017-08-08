@@ -2,10 +2,8 @@
 <nav>
   <div class="nav-wrapper indigo darken-1">
     <a href="#" class="brand-logo right">Voracious</a>
-<<<<<<< HEAD
     <a *ngIf="user"> Hola {{ User.username }} </a>
-=======
->>>>>>> 548b53accb31caa62e2a93bada0041dec24bfa51
+
 
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li *ngIf="session.user && session.startLoginCompleted"><strong class="red"> Welcome {{session.user.username}}</strong></li>
@@ -14,12 +12,10 @@
       <li *ngIf="session.user && session.startLoginCompleted"><a [routerLink]="['profile']">Your Profile</a> </li>
       <li><a [routerLink]="['foods']">Foods</a></li>
       <li><a [routerLink]="['']">Home</a></li>
-<<<<<<< HEAD
-      <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()" [routerLink]="['login']">Logout</a></li>
-=======
-      <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()">Logout</a></li>
 
->>>>>>> 548b53accb31caa62e2a93bada0041dec24bfa51
+      <li *ngIf="session.user && session.startLoginCompleted"><a (click)="logout()" [routerLink]="['login']">Logout</a></li>
+
+
     </ul>
   </div>
 </nav>

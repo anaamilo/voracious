@@ -6,7 +6,7 @@
   <div class="col offset-s4">
   </div>
   <div class="col s3 boximage">
-<img class=" circle responsive-img" src="./assets/avatarImageExample.jpg">
+<img class=" circle responsive-img" src="./assets/lombarda.jpg">
 </div>
 </div>
 
@@ -26,7 +26,7 @@
     <div class="nav-wrapper">
       <form>
         <div class="input-field">
-          <input id="search"
+          <input id="search" autocomplete="off"
             materialize="autocomplete"
             [materializeParams]="[{'data': locations}]"
             type="search" placeholder="Busca croquetas, pique macho..." required>
@@ -60,9 +60,11 @@
 </div>
 </div>
 
-<div class="row foodtiles">
-  <div class="col s4 foodtile foodcategory pizza hoverable">
-    <a href="#"><h5>Pizza</h5></a>
+<div class="row foodtiles" >
+
+
+  <div class="col s4 foodtile foodcategory pizza hoverable"  >
+    <a [routerLink]="['/foods/category', category]"><h5>Comida Española</h5></a>
   </div>
 
   <div class="col s4 foodtile foodcategory burger hoverable">

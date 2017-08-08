@@ -19,6 +19,8 @@ import { FileSelectDirective } from "ng2-file-upload";
 import { FoodActivationService} from '../services/food-activation.service';
 import { UserprofileComponent } from './userprofile/userprofile.component'
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { FoodCategoryComponent } from './food-category/food-category.component';
+
 
 
 
@@ -32,7 +34,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     NewFoodComponent,
     FoodDetailsComponent,
     FileSelectDirective,
-    UserprofileComponent
+    UserprofileComponent,
+    FoodCategoryComponent,
   ],
   imports: [
     BrowserModule,
