@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'foods/category/:category', component: FoodCategoryComponent },
+  { path: 'api/foods/category/:foodCategory', component: FoodCategoryComponent },
   {
     path: 'profile', component: UserprofileComponent,
     // canActivate: [FoodActivationService]

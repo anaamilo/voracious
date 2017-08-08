@@ -1,3 +1,25 @@
-<p>
-  food-category works!
-</p>
+<div class="row">
+<div *ngFor="let food of foods"  class="col s4">
+
+          <div class="card">
+            <div class="card-image">
+
+              <img class="foodpic img-responsive" [src]='"http://localhost:3000/"+food.imgAvatar' />
+              <span class="card-title">  <h5> {{ food.foodName }} </h5></span>
+            </div>
+            <div class="card-content">
+              <p>{{food.review}}</p>
+              <br>
+              <span><strong>Restaurant:</strong>{{ food.restaurantName }}</span>
+              <span> <strong>Rate:</strong>{{ food.rate }}/5</span>
+            </div>
+            <div class="card-action">
+              <a class="btn" [routerLink]="[food._id]">Food Details</a>
+
+            </div>
+          </div>
+
+</div>
+<span><a [routerLink]="['/foods']"> Back to list </a></span>
+
+</div>

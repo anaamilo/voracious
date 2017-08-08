@@ -61,6 +61,18 @@ router.post('/', upload.single('file'), (req, res, next) => {
   }).catch( error => res.json(error));
 });
 
+
+
+router.get('/category/:foodCategory', (req, res) => {
+  const foodCategory = req.params;
+  console.log("BACK", foodCategory);
+  Food.find( foodCategory ).then( food => {
+    res.json(food);
+  }).catch( e => {
+    res.json(e);
+  });
+});
+
 router.get('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });

@@ -47,9 +47,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const authRoutes = require('./routes/auth');
-app.use('/api/auth', authRoutes);
-
 const foodRoutes = require('./routes/foods');
+
+app.use('/api/auth', authRoutes);
 app.use('/api/foods', foodRoutes);
 
 app.use((req, res, next) => {

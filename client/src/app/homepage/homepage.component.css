@@ -98,7 +98,7 @@ footer {
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.4),
         rgba(0, 0, 0, 0.4)
-      ), url("../../assets/category_burger.jpg");
+      ), url("../../assets/Piquemacho.png");
 }
 
 .croquetas {
@@ -124,5 +124,5 @@ footer {
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.4),
         rgba(0, 0, 0, 0.4)
-      ), url("../../assets/Piquemacho.png");
+      ),url("../../assets/sushi.jpg");
 }
