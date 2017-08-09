@@ -1,14 +1,14 @@
 <div class="container">
   <h1> Edit Food</h1>
 
-  <div class="card-panel grey lighten-4">
+  <div *ngIf="food" class="card-panel grey lighten-4">
 
     <form class="col s12" (ngSubmit)="createFood(myForm)" #myForm="ngForm" novalidate>
 
       <div class="row">
         <div class="input-field col s12">
              <i class="material-icons prefix">local_dining</i>
-             <input id="icon_prefix" type="text" autofocus value="{{food.foodName}}"
+             <input id="icon_prefix" type="text" autofocus ngMod value="{{food.foodName}}"
              name="foodName" class="validate" minlength="3" required>
           </div>
        </div>

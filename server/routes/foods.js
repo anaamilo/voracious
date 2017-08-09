@@ -99,7 +99,7 @@ router.get('/:id', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-
+console.log("Hola")
   const updates = {
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
@@ -110,7 +110,6 @@ router.put('/:id', (req, res) => {
     restaurantAddress: req.body.restaurantAddress,
     restaurantFoodName: req.body.restaurantFoodName,
     review: req.body.review,
-    imgAvatar: `/uploads/${req.file.filename}`
   };
   console.log(updates);
 

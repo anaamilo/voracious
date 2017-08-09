@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {SessionService} from '../services/session.service'
 import $ from 'jquery';
+import './js/init.js'
 
 
 @Component({
