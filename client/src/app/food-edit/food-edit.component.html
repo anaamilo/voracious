@@ -1,0 +1,113 @@
+<div class="container">
+  <h1> Edit Food</h1>
+
+  <div class="card-panel grey lighten-4">
+
+    <form class="col s12" (ngSubmit)="createFood(myForm)" #myForm="ngForm" novalidate>
+
+      <div class="row">
+        <div class="input-field col s12">
+             <i class="material-icons prefix">local_dining</i>
+             <input id="icon_prefix" type="text" autofocus value="{{food.foodName}}"
+             name="foodName" class="validate" minlength="3" required>
+          </div>
+       </div>
+
+
+
+       <div class="row">
+           <div class="input-field col s12">
+                   <i class="material-icons prefix">featured_play_list</i>
+               <select id="category" type="text"  value="{{food.foodCategory}}"
+               name="foodCategory" autofocus class="validate" required>
+                 <option value="{{food.foodCategory}}"></option>
+                 <option value="italiana">cocina italiana</option>
+                 <option value="española">cocina española</option>
+                 <option value="mexicana">cocina mexicana</option>
+                 <option value="boliviana">cocina boliviana</option>
+                 <option value="fast-food">cocina fast-food</option>
+                 <option value="japonesa">cocina japonesa</option>
+               </select>
+             </div>
+           </div>
+
+
+
+             <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">filter_list</i>
+                <input id="subC" type="text" value="{{food.foodSubCategory}}" name="foodSubCategory" class="validate">
+
+              </div>
+            </div>
+
+       <div class="row">
+             <div class="input-field col s5">
+               <i class="material-icons prefix">attach_money</i>
+               <input id="foodP" type="number" autofocus value="{{food.price}}" required name="price" class="validate">
+             </div>
+
+
+
+                   <div class="input-field col s5">
+                     <i class="material-icons prefix">star_border</i>
+                     <input id="foodR" type="number" autofocus value="{{food.rate}}"
+                     name="rate"required class="validate">
+                   </div>
+       </div>
+
+
+             <div class="row">
+               <div class="input-field col s12">
+                 <i class="material-icons prefix">restaurant</i>
+                 <input id="city" type="text" autofocus value="{{food.restaurantName}}"
+                  name="restaurantName" required class="validate">
+               </div>
+
+             </div>
+
+             <div class="row">
+               <div class="input-field col s12">
+                 <i class="material-icons prefix"> location_on</i>
+                 <input id="city" type="text"value="{{food.restaurantAddress}}"
+                  name="restaurantAddress" autofocus required class="validate">
+               </div>
+           </div>
+
+
+             <div class="row">
+               <div class="input-field col s12">
+                 <i class="material-icons prefix"> room_service</i>
+                 <input id="city" type="text" autofocus value="{{food.restaurantFoodName}}"
+                  name="restaurantFoodName" required class="validate">
+               </div>
+           </div>
+
+           <div class="file-field input-field">
+          <div class="btn">
+            <span>Food Image</span>
+            <input type="file" name="imgAvatar" ng2FileSelect [uploader]="uploader">
+          </div>
+          <div class="file-path-wrapper">
+            <input name="imgAvatar" autofocus class="file-path validate" type="text">
+          </div>
+        </div>
+
+             <div class="row">
+               <div class="input-field col s12">
+                     <i class="material-icons prefix">rate_review</i>
+                   <textarea id="textarea1" autofocus value="{{food.review}}"
+                   name="review" class="materialize-textarea"></textarea>
+                 </div>
+                   <button type="button"(click)="editFood(food)" name='btn_edit' class='col s4 offset-s2 btn btn-large waves-effect orange'>Save Changes</button>
+                   <button type="reset" name='btn_cancel' class='col s4 offset-s1 btn btn-large waves-effect red'>Reset Changes</button>
+             </div>
+
+
+
+
+    </form>
+  </div>
+  </div>
+
+  <p class="error"> {{ error }} </p>

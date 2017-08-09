@@ -1,19 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const Food = require('../models/Food');
+const User       = require('../models/User');
 const upload = require('../config/multer');
 const mongoose = require ('mongoose');
 
-// const ({
-//   username: req.body.username,
-//   password: req.body.password,
-//   name: req.body.name,
-//   lastname: req.body.lastname,
-//   email: req.body.email,
-//   city: req.body.city,
-//   birthdate: req.body.birthdate,
-//   description: req.body.description
-// });
 
 
 router.get('/', (req, res, next) => {
@@ -22,7 +13,18 @@ router.get('/', (req, res, next) => {
       res.json(err);
       return;
     }
-    res.json(foodsList);
+
+    foodListPromises = foodsList.map( f => {
+      return new Promise((resolve, reject) => {
+        f.populate('foodCreator', (err, foodItem) => {
+          resolve(foodItem);
+        });
+      });
+    });
+    Promise.all(foodListPromises).then(foodList => {
+      console.log(foodList);
+      res.json(foodList);
+    })
   });
 });
 
@@ -39,6 +41,7 @@ router.get('/search', (req, res, next) => {
 
 router.post('/', upload.single('file'), (req, res, next) => {
   console.log(req.file.filename);
+  console.log(req.user);
   const theFood = new Food({
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,
@@ -48,9 +51,11 @@ router.post('/', upload.single('file'), (req, res, next) => {
     restaurantName: req.body.restaurantName,
     restaurantAddress: req.body.restaurantAddress,
     restaurantFoodName: req.body.restaurantFoodName,
+    foodCreator: req.user._id,
     review: req.body.review,
     imgAvatar: `/uploads/${req.file.filename}`
   });
+
   console.log('POST');
   console.log(theFood);
   theFood.save().then( food => {
@@ -88,11 +93,9 @@ router.get('/:id', (req, res) => {
       res.json(theFood);
     });
 });
+
+
 router.put('/:id', (req, res) => {
-  if(!mongoose.Types.ObjectId.isValid(req.params._id)) {
-    res.status(400).json({ message: 'Specified id is not valid' });
-    return;
-  }
 
   const updates = {
     foodName: req.body.foodName,
@@ -106,18 +109,16 @@ router.put('/:id', (req, res) => {
     review: req.body.review,
     imgAvatar: `/uploads/${req.file.filename}`
   };
+  console.log(updates);
 
-  Food.findByIdAndUpdate(req.params.id, updates, (err) => {
-    if (err) {
-      res.json(err);
-      return;
-    }
-
-    res.json({
-      message: 'Updated successfully'
-    });
+  Food.findByIdAndUpdate(req.params.id, updates).then(food => {
+      res.json(food);
+    })
+    .catch(e => res.json(e));
   });
-});
+
+
+
 router.delete('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });

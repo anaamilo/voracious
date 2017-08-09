@@ -22,7 +22,6 @@ uploader: FileUploader = new FileUploader({
     foodName: '',
     foodCategory: '',
     foodSubCategory: '',
-    foodCreator:'',
     price:'',
     rate:'',
     imgAvatar:'',

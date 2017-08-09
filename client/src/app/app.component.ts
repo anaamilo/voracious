@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {SessionService} from '../services/session.service'
-
+import $ from 'jquery';
 
 
 @Component({
@@ -11,6 +11,9 @@ import {SessionService} from '../services/session.service'
 export class AppComponent {
   title = 'app';
   constructor(private session:SessionService){ }
+
+
+  ngOnInit() {      }
 
   logout(){
     this.session.logout().subscribe();

@@ -14,7 +14,6 @@ authRoutes.get('/signup',returnMessage("This should be a POST"));
 
 //Sign-up POST route
 authRoutes.post('/signup',upload.single('file'), (req, res, next) => {
-console.log(req.file);
   const {
     username,
     password,
@@ -25,8 +24,9 @@ console.log(req.file);
     birthdate,
     description
   } = req.body;
-avatarImage = `/uploads/${req.file.filename}`;
+
   if(!username || !password) {
+    console.log("entro error 1");
     res.status(400).json({
       message:'Please provide matching username and/or password'
     });
@@ -38,23 +38,24 @@ avatarImage = `/uploads/${req.file.filename}`;
       res.status(400).json({
         message:"Username already exists"
       });
-    return;
+    return ;
   }
 
   const salt = bcrypt.genSaltSync(10);
   const hashPass = bcrypt.hashSync(password, salt);
-
   const theUser = new User({
     username,
     password: hashPass,
     name,
     lastname,
     email,
-    avatarImage,
+    avatarImage: `/uploads/${req.file.filename}`,
     city,
     birthdate,
     description
-  }).save().then(user => {
+  });
+  console.log(theUser)
+  theUser.save().then(user => {
     req.login(user, (err) => {
     if (err) {
       res.status(500).json({

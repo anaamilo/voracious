@@ -18,8 +18,5 @@ export class FoodListComponent implements OnInit {
       .subscribe((foods) => {
         this.foods = foods;
       });
-
-
-
   }
 }

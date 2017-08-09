@@ -45,12 +45,19 @@ export class SignupComponent implements OnInit {
 
   signup() {
     console.log(this.newUser);
-    this.session.signup(this.newUser)
-    .subscribe(
-        (user) =>       this.router.navigate(['/login']),
-        (err) => this.error = err
-      );
-      console.log(`${this.username} is created`)
+    this.uploader.onBuildItemForm = (item, form) => {
+      form.append('username', this.newUser.username);
+      form.append('password', this.newUser.password);
+      form.append('name', this.newUser.name);
+      form.append('avatarImage', this.newUser.avatarImage);
+      form.append('lastname', this.newUser.lastname);
+      form.append('email', this.newUser.email);
+      form.append('city', this.newUser.city);
+      form.append('description', this.newUser.description);
+      form.append('birthdate', this.newUser.birthdate);
+    };
+    this.uploader.uploadAll();
+    this.router.navigate(["/home"])
   }
 
   logout() {
