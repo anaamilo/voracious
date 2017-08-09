@@ -10,7 +10,7 @@ import { FoodService } from '../../services/food.service';
 })
 export class HomepageComponent implements OnInit {
   locations: Object
-  products: Array<any>
+  products: Observable<Array<Object>>;
 
   constructor(private foodService: FoodService) {
     this.locations = {};
@@ -26,9 +26,7 @@ export class HomepageComponent implements OnInit {
   }
 
   performSearch(searchTerm: HTMLInputElement): void {
-    this.foodService.getFoodName(searchTerm.value).subscribe( findFoods => {
-      this.products = findFoods
-    })
+    this.products = this.foodService.getFoodName(searchTerm.value)
   }
 
 }

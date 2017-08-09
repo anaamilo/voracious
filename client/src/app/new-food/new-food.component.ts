@@ -13,44 +13,40 @@ import $ from 'jquery';
 })
 export class NewFoodComponent implements OnInit {
 
-uploader: FileUploader = new FileUploader({
-  url: `http://localhost:3000/api/foods`
- });
+  uploader: FileUploader = new FileUploader({
+    url: `http://localhost:3000/api/foods`
+  });
   error: string;
   foodName: string;
   newFood = {
     foodName: '',
     foodCategory: '',
     foodSubCategory: '',
-    foodCreator:'',
-    price:'',
-    rate:'',
-    imgAvatar:'',
-    restaurantName:'',
-    restaurantAddress:'',
-    restaurantFoodName:'',
-    review:'',
+    foodCreator: '',
+    price: '',
+    rate: '',
+    imgAvatar: '',
+    restaurantName: '',
+    restaurantAddress: '',
+    restaurantFoodName: '',
+    review: '',
   };
 
   feedback: string;
 
   constructor(
     private foodService: FoodService,
-    public router:Router) {}
+    public router: Router) { }
 
 
   ngOnInit() {
-
     $('select').material_select();
-  $('select').change((e) => {
-       this.newFood[e.currentTarget.name] = e.currentTarget.value;
-  });
-
+    $('select').change((e) => {
+      this.newFood[e.currentTarget.name] = e.currentTarget.value;
+    });
   }
 
-
-
-  createFood(food){
+  createFood(food) {
     console.log(this.newFood)
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('foodName', this.newFood.foodName);
@@ -65,9 +61,7 @@ uploader: FileUploader = new FileUploader({
       form.append('restaurantFoodName', this.newFood.restaurantFoodName);
       form.append('review', this.newFood.review);
     };
-    this.uploader.uploadAll();
+    this.uploader.uploadAll()
     this.router.navigate(['/foods']);
-
   }
-
 }
