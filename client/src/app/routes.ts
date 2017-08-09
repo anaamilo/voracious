@@ -21,10 +21,9 @@ export const routes: Routes = [
   },
   { path: 'foods', component: FoodListComponent },
   { path: 'foods/add', component: NewFoodComponent },
-  {
-    path: 'foods/:id', component: FoodDetailsComponent,
-    canActivate: [FoodActivationService],
-    },
+  { path: 'foods/:id', component: FoodDetailsComponent,
+    canActivate: [FoodActivationService],},
     {path:'foods/:id/edit', component: FoodEditComponent},
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+{ path: 'foods/searchname', component: HomepageComponent},
 ];

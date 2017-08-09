@@ -9,7 +9,6 @@ main {
 }
 
 
-
 .searchbox {
   margin-top: 20px;
   background-image: url("../../assets/cover2.jpg");
@@ -125,4 +124,33 @@ footer {
         rgba(0, 0, 0, 0.4),
         rgba(0, 0, 0, 0.4)
       ),url("../../assets/sushi.jpg");
+}
+
+
+.subtitle .card-panel{
+  padding:5px;
+}
+
+.card{
+  width: 50%;
+  margin-left: 25%;
+}
+
+/*lombardis hack*/
+.card .card-image img{
+  height: 100%;
+}
+.card-image{
+  height:250px;
+}
+
+.card .card-content p {
+    height: 70px;
+}
+/*end modify*/
+
+
+
+.card-content span {
+  margin-right:20px;
 }

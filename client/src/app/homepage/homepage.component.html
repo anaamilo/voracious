@@ -1,108 +1,123 @@
-
-
 <div class="container">
-<div class="searchbox">
-<div class="row">
-  <div class="col offset-s4">
-  </div>
-  <div class="col s3 boximage">
-<img class=" circle responsive-img" src="./assets/lombarda.jpg">
-</div>
-</div>
-
-<div class="row foodtitle">
-  <div class="col s12">
-  <h1>Voracious</h1>
-  <h5>Busca lo que quieres comer, no donde quieres comer</h5>
-  </div>
-</div>
-
-
-
-
-<div class="row">
-  <div class="col s10 offset-s1  searcher container">
-  <nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" autocomplete="off"
-            materialize="autocomplete"
-            [materializeParams]="[{'data': locations}]"
-            type="search" placeholder="Busca croquetas, pique macho..." required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-  </nav>
-
-</div>
-
-</div>
-
-
-
-<div class="row">
-  <div class="col s12 buttonsearch">
-      <a class="btn btn-large">Search <i class="material-icons right">local_dining</i></a>
-  </div>
-</div>
-
- </div>
-
-
-<div class="row foodtitle">
-  <div class="col s12">
-    <hr>
-<h2>Encuentra tu mejor comida!</h2>
-<hr>
-</div>
-</div>
-
-<div class="row foodtiles" >
-
-
-  <div class="col s4 foodtile foodcategory pizza hoverable"  >
-    <a [routerLink]="['/api/foods/category/italiana']"><h5>Comida Italiana</h5></a>
-  </div>
-
-  <div class="col s4 foodtile foodcategory burger hoverable">
-    <a [routerLink]="['/api/foods/category/boliviana']"><h5>Comida Boliviana</h5></a>
-  </div>
-
-  <div class="col s4 foodtile foodcategory paella hoverable">
-    <a [routerLink]="['/api/foods/category/española']"><h5>Comida Española</h5></a>
-  </div>
-
-</div>
-
-<div class="row foodtiles">
-  <div class="col s4 foodtile foodcategory croquetas hoverable">
-    <a [routerLink]="['/api/foods/category/mexicana']"><h5>Comida Mexicana</h5></a>
+  <div class="searchbox">
+    <div class="row">
+      <div class="col offset-s4">
+      </div>
+      <div class="col s3 boximage">
+        <img class=" circle responsive-img" src="./assets/lombarda.jpg">
+      </div>
     </div>
 
-  <div class="col s4 foodtile foodcategory pique hoverable">
-    <a [routerLink]="['/api/foods/category/japonesa']"><h5>Comida Japonesa</h5></a>
-  </div>
+    <div class="row foodtitle">
+      <div class="col s12">
+        <h1>Voracious</h1>
+        <h5>Busca lo que quieres comer, no donde quieres comer</h5>
+      </div>
+    </div>
 
-  <div class="col s4 foodtile sushi hoverable">
-  <a [routerLink]="['/api/foods/category/fast-food']"><h5>Fast Food</h5></a>
+
+
+
+    <div class="row">
+      <div class="col s10 offset-s1  searcher container">
+        <nav>
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input #searchTerm id="search" autocomplete="off" materialize="autocomplete" [materializeParams]="[{'data': locations}]" type="search" placeholder="Busca croquetas, pique macho..." required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="row">
+      <div class="col s12 buttonsearch">
+        <button (click)="performSearch(searchTerm)" class="btn btn-large">Search <i class="material-icons right">local_dining</i></button>
+      </div>
+    </div>
+
+  </div>
+<div *ngFor="let product of products | async">
+  <div class="card">
+    <div class="card-image">
+
+      <img class="foodpic img-responsive" [src]='"http://localhost:3000/"+product.imgAvatar' />
+      <span class="card-title">  <h5> {{ product.foodName }} </h5></span>
+    </div>
+    <div class="card-content">
+      <p>{{product.review}}</p>
+      <br>
+      <span><strong>Restaurant:</strong>{{ product.restaurantName }}</span>
+      <span> <strong>Rate:</strong>{{ product.rate }}/5</span>
+
+    <div class="card-action">
+      <a class="btn" [routerLink]="['/foods/', product._id]">Food Details</a>
+
+    </div>
+</div>
   </div>
 
 </div>
+
+  <div class="row foodtitle">
+    <div class="col s12">
+      <hr>
+      <h2>Encuentra tu mejor comida!</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row foodtiles">
+
+
+    <div class="col s4 foodtile foodcategory pizza hoverable">
+      <a [routerLink]="['/api/foods/category/italiana']"><h5>Comida Italiana</h5></a>
+    </div>
+
+    <div class="col s4 foodtile foodcategory burger hoverable">
+      <a [routerLink]="['/api/foods/category/boliviana']"><h5>Comida Boliviana</h5></a>
+    </div>
+
+    <div class="col s4 foodtile foodcategory paella hoverable">
+      <a [routerLink]="['/api/foods/category/española']"><h5>Comida Española</h5></a>
+    </div>
+
+  </div>
+
+  <div class="row foodtiles">
+    <div class="col s4 foodtile foodcategory croquetas hoverable">
+      <a [routerLink]="['/api/foods/category/mexicana']"><h5>Comida Mexicana</h5></a>
+    </div>
+
+    <div class="col s4 foodtile foodcategory pique hoverable">
+      <a [routerLink]="['/api/foods/category/japonesa']"><h5>Comida Japonesa</h5></a>
+    </div>
+
+    <div class="col s4 foodtile sushi hoverable">
+      <a [routerLink]="['/api/foods/category/fast-food']"><h5>Fast Food</h5></a>
+    </div>
+
+  </div>
 </div>
 
 <footer class="page-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col l12 s12">
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-          Copyright © 2014  Claudia Duarte & Salvatore Costanzo
-          </div>
-        </div>
-      </footer>
+  <div class="container">
+    <div class="row">
+      <div class="col l12 s12">
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      Copyright © 2017 Claudia Duarte & Salvatore Costanzo Searchbar by: Miguel
+    </div>
+  </div>
+</footer>
