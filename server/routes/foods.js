@@ -51,6 +51,11 @@ router.post('/', upload.single('file'), (req, res, next) => {
   }).catch( error => res.json(error));
 });
 
+router.get('/searchname/:foodName', (req, res, next) => {
+  Food.find({ foodName: req.params.foodName}).then( foodsList => {
+    res.json(foodsList);
+  }).catch( error => res.json(error));
+});
 
 
 router.get('/category/:foodCategory', (req, res) => {

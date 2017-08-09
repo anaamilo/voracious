@@ -26,5 +26,6 @@ export const routes: Routes = [
     path: 'foods/:id', component: FoodDetailsComponent,
     canActivate: [FoodActivationService]
   },
+  { path: 'foods/searchname', component: HomepageComponent},
   { path: '**', redirectTo: '' }
 ];
