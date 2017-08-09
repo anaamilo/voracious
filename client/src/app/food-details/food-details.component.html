@@ -11,7 +11,7 @@
                           </div>
 
                         </div>
-                        <a class="waves-effect waves-light btn orange">Edit</a>
+                        <a [routerLink]="['/foods/', food._id, 'edit']" class="waves-effect waves-light btn orange">Edit </a>
                         <a (click)="deleteFood()" class="waves-effect waves-light btn red"> Delete </a>
 
                 </div>
@@ -38,6 +38,7 @@
         <span class="tabul1"><strong>Review: </strong></span><span class="tabul2">{{food.review }}</span>
         <p>
 <a [routerLink]="['/foods']"> Back to list </a>
+
 
        </div>
        </div>

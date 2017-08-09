@@ -1,11 +1,12 @@
 
 <nav>
   <div class="nav-wrapper indigo darken-1">
-    <a href="#" class="brand-logo right">Voracious</a>
+    <a [routerLink]="['']" class="brand-logo right">Voracious</a>
     <a *ngIf="user"> Hola {{ User.username }} </a>
 
+  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul id="mobile-demo" class="left hide-on-med-and-down">
 
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li *ngIf="session.user && session.startLoginCompleted"><strong class="red"> Welcome {{session.user.username}}</strong></li>
       <li *ngIf="!session.user && session.startLoginCompleted"><a [routerLink]="['signup']">Signup</a></li>
       <li *ngIf="!session.user && session.startLoginCompleted"><a [routerLink]="['login']">Login</a></li>
@@ -17,7 +18,17 @@
 
 
     </ul>
+
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    </ul>
   </div>
 </nav>
+
+
+
 
 <router-outlet></router-outlet>

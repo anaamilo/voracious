@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { FoodService } from '../../services/food.service';
-
+import { Observable } from 'rxjs';
+import "rxjs/add/operator/mergeMap";
 
 
 @Component({
@@ -17,6 +18,7 @@ export class FoodDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    
     private foodService: FoodService)
     {}
 
@@ -27,6 +29,7 @@ export class FoodDetailsComponent implements OnInit {
           this.getFoodDetails(params['id']);
         });
       }
+
 
       getFoodDetails(id) {
         this.foodService.get(id)

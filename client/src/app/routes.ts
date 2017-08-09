@@ -8,8 +8,7 @@ import { NewFoodComponent } from './new-food/new-food.component';
 import { FoodDetailsComponent } from './food-details/food-details.component';
 import { FoodActivationService} from '../services/food-activation.service';
 import { FoodCategoryComponent } from './food-category/food-category.component';
-
-
+import {FoodEditComponent} from './food-edit/food-edit.component'
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -22,10 +21,9 @@ export const routes: Routes = [
   },
   { path: 'foods', component: FoodListComponent },
   { path: 'foods/add', component: NewFoodComponent },
-  {
-    path: 'foods/:id', component: FoodDetailsComponent,
-    canActivate: [FoodActivationService]
-  },
-  { path: 'foods/searchname', component: HomepageComponent},
-  { path: '**', redirectTo: '' }
+  { path: 'foods/:id', component: FoodDetailsComponent,
+    canActivate: [FoodActivationService],},
+    {path:'foods/:id/edit', component: FoodEditComponent},
+  { path: '**', redirectTo: '' },
+{ path: 'foods/searchname', component: HomepageComponent},
 ];

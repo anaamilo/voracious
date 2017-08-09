@@ -20,6 +20,7 @@ import { FoodActivationService} from '../services/food-activation.service';
 import { UserprofileComponent } from './userprofile/userprofile.component'
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { FoodCategoryComponent } from './food-category/food-category.component';
+import { FoodEditComponent } from './food-edit/food-edit.component';
 
 
 
@@ -36,6 +37,7 @@ import { FoodCategoryComponent } from './food-category/food-category.component';
     FileSelectDirective,
     UserprofileComponent,
     FoodCategoryComponent,
+    FoodEditComponent,
   ],
   imports: [
     BrowserModule,

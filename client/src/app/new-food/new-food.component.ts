@@ -22,14 +22,13 @@ export class NewFoodComponent implements OnInit {
     foodName: '',
     foodCategory: '',
     foodSubCategory: '',
-    foodCreator: '',
-    price: '',
-    rate: '',
-    imgAvatar: '',
-    restaurantName: '',
-    restaurantAddress: '',
-    restaurantFoodName: '',
-    review: '',
+    price:'',
+    rate:'',
+    imgAvatar:'',
+    restaurantName:'',
+    restaurantAddress:'',
+    restaurantFoodName:'',
+    review:'',
   };
 
   feedback: string;

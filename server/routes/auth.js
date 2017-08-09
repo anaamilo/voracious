@@ -1,6 +1,7 @@
 const express    = require('express');
 const passport   = require('passport');
 const bcrypt     = require('bcrypt');
+const upload = require('../config/multer');
 const User       = require('../models/User');
 const authRoutes = express.Router();
 
@@ -12,21 +13,20 @@ function returnMessage(message){
 authRoutes.get('/signup',returnMessage("This should be a POST"));
 
 //Sign-up POST route
-authRoutes.post('/signup', (req, res, next) => {
-
+authRoutes.post('/signup',upload.single('file'), (req, res, next) => {
   const {
     username,
     password,
     name,
     lastname,
     email,
-    avatarImage,
     city,
     birthdate,
     description
   } = req.body;
 
   if(!username || !password) {
+    console.log("entro error 1");
     res.status(400).json({
       message:'Please provide matching username and/or password'
     });
@@ -38,28 +38,30 @@ authRoutes.post('/signup', (req, res, next) => {
       res.status(400).json({
         message:"Username already exists"
       });
-    return;
+    return ;
   }
 
   const salt = bcrypt.genSaltSync(10);
   const hashPass = bcrypt.hashSync(password, salt);
-
   const theUser = new User({
     username,
     password: hashPass,
     name,
     lastname,
     email,
-    avatarImage,
+    avatarImage: `/uploads/${req.file.filename}`,
     city,
     birthdate,
     description
-  }).save().then(user => {
+  });
+  console.log(theUser)
+  theUser.save().then(user => {
     req.login(user, (err) => {
     if (err) {
       res.status(500).json({
         message: 'Oops..something went wrong'
       });
+      console.log(err);
       return;
     }
     res.status(200).json(req.user);
