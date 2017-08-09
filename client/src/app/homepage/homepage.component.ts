@@ -10,7 +10,7 @@ import { FoodService } from '../../services/food.service';
 })
 export class HomepageComponent implements OnInit {
   locations: Object
-  products: Observable<Array<Object>>;
+  products: Observable<Array<object>>;
 
   constructor(private foodService: FoodService) {
     this.locations = {};
