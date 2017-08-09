@@ -90,9 +90,12 @@ router.get('/:id', (req, res) => {
         return;
       }
 
-      res.json(theFood);
-    });
-});
+      theFood.populate('foodCreator', (err, foodOne) => {
+          console.log(foodOne);
+          res.json(foodOne);
+        });
+      });
+  });
 
 
 router.put('/:id', (req, res) => {
