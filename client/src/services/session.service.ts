@@ -70,6 +70,11 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
+  remove(id) {
+    return this.http.delete(`${this.BASE_URL}/${id}`)
+      .map((res) => res.json());
+  }
+
 
 
 }

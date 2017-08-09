@@ -22,5 +22,12 @@ user: any;
     });
     // this.user.getPrivateData().subscribe(res => console.log(res));
   }
-
+  deleteUser() {
+  if (window.confirm('Are you sure?')) {
+    this.sessionService.remove(this.user._id)
+      .subscribe(() => {
+        this.router.navigate(['']);
+      });
+  }
+}
 }

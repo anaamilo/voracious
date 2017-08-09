@@ -24,7 +24,7 @@ router.get('/', (req, res, next) => {
     Promise.all(foodListPromises).then(foodList => {
       console.log(foodList);
       res.json(foodList);
-    })
+    });
   });
 });
 
@@ -104,7 +104,7 @@ router.get('/:id', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-console.log("Hola")
+console.log("Hola");
   const updates = {
     foodName: req.body.foodName,
     foodCategory: req.body.foodCategory,

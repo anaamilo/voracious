@@ -17,7 +17,6 @@ export class FoodListComponent implements OnInit {
     this.foodService.getList()
       .subscribe(foods => {
         this.foods = foods;
-        console.log(this.foods)
       });
   }
 }

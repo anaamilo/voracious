@@ -46,7 +46,7 @@ export class FoodEditComponent implements OnInit {
     }
 
     editFood(id) {
-      this.foodService.edit(id)
+      this.foodService.get(id)
         .subscribe((food) => {
           this.food = food;
         });
