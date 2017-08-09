@@ -1,17 +1,27 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { FoodListComponent } from './food-list/food-list.component';
-import { NewFoodComponent } from './new-food/new-food.component';
-import { FoodDetailsComponent } from './food-details/food-details.component';
+import { Routes } from "@angular/router";
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { HomeComponent } from './home/home.component';
+import { EventsListComponent } from './events-list/events-list.component';
+import { NewEventFormComponent } from './new-event-form/new-event-form.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { NewTeamFormComponent } from './new-team-form/new-team-form.component';
+import { TeamsListComponent } from './teams-list/teams-list.component';
+import { EditTeamComponent } from './edit-team/edit-team.component';
+import { ActiveEventComponent } from './active-event/active-event.component';
+import { TeamComponent } from './team/team.component';
+
 
 export const routes: Routes = [
-  { path: '', component: HomepageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'foods', component: FoodListComponent },
-  { path: 'foods/add', component: NewFoodComponent },
-  { path: 'foods/:id', component: FoodDetailsComponent },
-  { path: '**', redirectTo: '' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'signup',  component: SignupFormComponent },
+  { path: 'login', component: LoginFormComponent },
+  { path: 'home', component: EventsListComponent },
+  { path: 'newevent', component: NewEventFormComponent },
+  { path: 'event/:id', component: EditEventComponent },
+  { path: 'event/:id/active', component: ActiveEventComponent },
+  { path: 'newteam', component: NewTeamFormComponent },
+  { path: 'teams', component: TeamsListComponent },
+  { path: 'team/:id/details', component: TeamComponent },
+  { path: 'team/:id/edit', component: EditTeamComponent },
 ];

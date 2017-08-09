@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../environments/environment';
 
-export interface User{
+export interface User {
   _id:string,
   username:string,
   updated_at:Date,
@@ -14,9 +14,9 @@ export interface User{
 
 @Injectable()
 export class SessionService {
-  user:User;
+  user:User; // The current logged in user
   startLoginCompleted:boolean = false;
-  BASE_URL:string=`${environment.BASE_URL}/api/auth`;
+  BASE_URL:string =`${environment.BASE_URL}/api/auth`;
   options:object = {withCredentials:true};
 
   constructor(private http:Http) {
@@ -32,8 +32,8 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
-  signup(user):Observable<User> {
-    return this.http.post(`${this.BASE_URL}/signup`, user, this.options)
+  signup(username:string, password:string, email:string):Observable<User> {
+    return this.http.post(`${this.BASE_URL}/signup`, {username, password, email}, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -65,11 +65,10 @@ export class SessionService {
       .catch(this.handleError);
   }
 
-  getPrivateData():Observable<object>{
-    return this.http.get(`${this.BASE_URL}/private`, this.options)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-
+  // getPrivateData():Observable<object>{
+  //   return this.http.get(`${this.BASE_URL}/private`, this.options)
+  //     .map(res => res.json())
+  //     .catch(this.handleError);
+  // }
 
 }

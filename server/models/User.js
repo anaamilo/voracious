@@ -1,20 +1,29 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-
- username: String,
+const userSchema = new Schema({
+  username: String,
   password: String,
-  name: String,
-  lastname: String,
   email: String,
-  avatarImage: {
+  displayName: {
     type: String,
-    default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250"
+    default:'',
   },
-  city: String,
-  birthdate: Date,
-  description: String,
+  googleID: {
+    type: String,
+  },
+  activePenaltyPoints: {
+    type: Number,
+  },
+  paidPenaltyPoints: {
+    type: Number,
+  },
+  hourlyRate: {
+    type: Number,
+  },
+  currency: {
+    type: String,
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -22,4 +31,5 @@ const UserSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;

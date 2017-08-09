@@ -1,18 +1,27 @@
+<div class="headerFake">
+este es el componente principal
 
-<nav>
-  <div class="nav-wrapper indigo darken-1">
-    <a href="#" class="brand-logo right">Voracious</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a [routerLink]="['login']">Login</a></li>
-      <li><a [routerLink]="['signup']">Sign Up</a></li>
-      <li><a [routerLink]="['foods']">Foods</a></li>
-      <li><a [routerLink]="['']">Home</a></li>
-    </ul>
-  </div>
-</nav>
+<!-- <app-login-form *ngIf="!session.user && session.startLoginCompleted"></app-login-form>
+<div *ngIf="session.user && session.startLoginCompleted">
+  <pre>{{ session.user | json }}</pre>
+  <button (click)="logout()">Logout</button>
+</div> -->
 
 
-<!-- <h1> hola soy la lombarda principal </h1>
+<div *ngIf="session.user && session.startLoginCompleted">
+  <h3> Hi, {{ session.user.username }}, you are logged in</h3>
+  <button (click)="logout()">Logout</button>
+</div>
 
-<a [routerLink]="['signup']"> View Details </a> -->
+<div *ngIf="!session.user">
+  <button [routerLink]="['/login']">Login</button>
+  <button [routerLink]="['/signup']">Signup</button>
+</div>
+
+<div *ngIf="session.user && session.startLoginCompleted">
+  <button [routerLink]="['/teams']">My Teams</button>
+</div>
+
+</div>
+
 <router-outlet></router-outlet>

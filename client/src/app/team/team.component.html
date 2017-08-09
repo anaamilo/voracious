@@ -1,0 +1,28 @@
+<div *ngIf="team">
+
+<div>
+  <a [routerLink]="['/home']"> Go Back to Events </a>
+</div>
+<div>
+  <h1> Team: {{team.teamName}}</h1>
+</div>
+
+<div>
+  <div>
+    <p>Total Money to Pay:</p>
+    <p>{{team.penalties}} EUR</p>
+  </div>
+</div>
+
+<div>
+      <div> Attendees:
+        <ul>
+          <li *ngFor="let attendee of attendees">
+            <span > {{ attendee.userID.displayName }} </span>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>

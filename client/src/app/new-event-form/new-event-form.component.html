@@ -1,0 +1,43 @@
+<div>
+  <a [routerLink]="['/home']"> Go Back to Events </a>
+</div>
+<div>
+  <h1>New Event</h1>
+</div>
+<form enctype="multipart/form-data">
+  <div>
+    <div>
+      <label for="title">Title for the Event</label>
+      <input id="title" type="text" name="title" [(ngModel)]="summary" required>
+    </div>
+  </div>
+  <div>
+      <label for="date-name-input"> Start Date</label>
+      <input type="datetime-local" name="startDate" class="form-control" placeholder="From" [(ngModel)]="startDate">
+    </div>
+    <div>
+      <label for="date-name-input"> End Date</label>
+      <input type="datetime-local" name="endDate" class="form-control" placeholder="Until" [(ngModel)]="endDate">
+    </div>
+  <div>
+    <div>
+      <label for="description">Descripcion</label>
+      <textarea id="description" type="text" name="description" [(ngModel)]="description"></textarea>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="attendees">Attendees</label>
+      <input id="attendees" type="text" name="attendees" [(ngModel)]="attendees">
+    </div>
+  </div>
+  <div>
+    <label for="teamsav">Team of the event</label>
+    <select class="form-control" id=teams [(ngModel)]="team" name="team">
+      <option *ngFor="let availableTeamEvent of availableTeamsEvent" [ngValue]="availableTeamEvent.teamID._id" #teamValue >{{ availableTeamEvent.teamID.teamName }}</option>
+    </select>
+  </div>
+  <div>
+    <button (click)="newEvent()" type="submit" name="action">Submit</button>
+  </div>
+</form>
